@@ -9,13 +9,21 @@
         android:id="@+id/navigation_home"
         android:name="com.Stardust.cabicat.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_normallayer"
+            app:destination="@id/navigation_normallayer" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_normallayer"
         android:name="com.Stardust.cabicat.ui.normalLayer.NormalLayerFragment"
         android:label="@string/title_normallayer"
-        tools:layout="@layout/fragment_normallayer" />
+        tools:layout="@layout/fragment_normallayer" >
+        <action
+            android:id="@+id/action_navigation_normallayer_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_secretlayer"
