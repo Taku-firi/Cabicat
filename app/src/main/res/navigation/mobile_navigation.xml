@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.Stardust.cabicat.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_normallayer"
+        android:name="com.Stardust.cabicat.ui.normalLayer.NormalLayerFragment"
+        android:label="@string/title_normallayer"
+        tools:layout="@layout/fragment_normallayer" />
+
+    <fragment
+        android:id="@+id/navigation_secretlayer"
+        android:name="com.Stardust.cabicat.ui.secretLayer.SecretLayerFragment"
+        android:label="@string/title_secretlayer"
+        tools:layout="@layout/fragment_secretlayer" />
+</navigation>
