@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Stardust.cabicat.R;
 
@@ -30,6 +31,10 @@ public class NormalLayerFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        RecyclerView rvnormal = root.findViewById(R.id.recyclerview_normallayer);
+
+
         return root;
     }
 }

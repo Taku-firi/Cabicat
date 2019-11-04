@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.Stardust.cabicat.R;
 
@@ -30,6 +31,9 @@ public class SecretLayerFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        RecyclerView rvsecret = root.findViewById(R.id.recyclerview_secretlayer);
+
         return root;
     }
 }
