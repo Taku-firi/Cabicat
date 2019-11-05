@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.Stardust.cabicat"
         minSdkVersion 17
@@ -17,6 +16,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion = '29.0.2'
 }
 
 dependencies {
@@ -32,5 +32,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
-    implementation 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
+    api 'com.github.anzaizai:EasySwipeMenuLayout:1.1.4'
 }

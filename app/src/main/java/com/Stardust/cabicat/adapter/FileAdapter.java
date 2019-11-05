@@ -8,13 +8,14 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
-    private List<FileItem> mFileitem;
-    private DatabaseHelper mDatabase;
+//    private DatabaseHelper mDatabase;
 
+//    public FileAdapter(DatabaseHelper mDatabase, int layoutResId, List<FileItem> data){
+//        super(layoutResId,data);
+//    }
     public FileAdapter(int layoutResId, List<FileItem> data){
         super(layoutResId,data);
     }
-
     @Override
     protected void convert(BaseViewHolder viewHolder, FileItem item) {
         viewHolder.setText(R.id.name_fileitem_normallayer, item.getName())
