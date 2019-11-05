@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_fileitem_menu_normallayer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentView="@+id/fileitem_view_content"
+    app:rightMenuView="@+id/right">
+
+
+    <RelativeLayout
+        android:id="@+id/fileitem_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <ImageView
+            android:id="@+id/image_fileitem_normallayer"
+            android:layout_width="55sp"
+            android:layout_height="55sp"
+            android:scaleType="fitStart"
+            android:scaleX="0.6"
+            android:scaleY="0.6"
+            android:src="@drawable/ic_fileitem_black_24dp"/>
+
+        <TextView
+            android:id="@+id/name_fileitem_normallayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/path_fileitem_normallayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_red_light"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:padding="20dp"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/right_menu_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_orange_dark"
+            android:padding="20dp"
+            android:text="" />
+    </LinearLayout>
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>
