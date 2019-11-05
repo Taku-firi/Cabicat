@@ -18,8 +18,8 @@ public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
     }
     @Override
     protected void convert(BaseViewHolder viewHolder, FileItem item) {
-        viewHolder.setText(R.id.name_fileitem_normallayer, item.getName())
-                .setText(R.id.path_fileitem_normallayer, item.getPath());
+        viewHolder.setText(R.id.fileitem_name, item.getName())
+                .setText(R.id.fileitem_path, item.getPath());
 
     }
 }

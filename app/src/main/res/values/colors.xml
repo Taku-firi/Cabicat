@@ -3,4 +3,12 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    // color used for FileItem
+    <color name="fileitemNameColor">#000000</color>
+    <color name="fileitemPathColor">#A5A2A2</color>
+    <color name="fileitemRightMoreBackColor">#1F8B97</color>
+    <color name="fileitemRightDeleteBackColor">#F44336</color>
+    <color name="fileitemRightMoreTextColor">#FFFFFF</color>
+    <color name="fileitemRightDeleteTextColor">#FFFFFF</color>
 </resources>

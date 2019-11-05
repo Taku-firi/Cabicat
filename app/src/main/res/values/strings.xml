@@ -3,4 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_normallayer">Normal Layer</string>
     <string name="title_secretlayer">Secret Layer</string>
+    
+    <string name="fileitem_adapterunit_normallayer_more">More</string>
+    <string name="fileitem_adapterunit_normallayer_delete">Delete</string>
 </resources>
