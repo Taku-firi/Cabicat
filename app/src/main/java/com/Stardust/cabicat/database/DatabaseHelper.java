@@ -33,8 +33,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + NAME + " TEXT,"
                     + SIZE + " LONG,"
                     + ADDEDDATE + " DATETIME,"
-                    + CHECKDATE + "DATETIME,"
-                    + PRIORITY + "INTEGER"
+                    + CHECKDATE + " DATETIME,"
+                    + PRIORITY + " INTEGER"
                     + ")";
     private static final String CREATE_TABLE_SECRETLAYER =
             "CREATE TABLE " + TABLE_SECRETLAYER
@@ -43,8 +43,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + NAME + " TEXT,"
                     + SIZE + " LONG,"
                     + ADDEDDATE + " DATETIME,"
-                    + CHECKDATE + "DATETIME,"
-                    + PRIORITY + "INTEGER"
+                    + CHECKDATE + " DATETIME,"
+                    + PRIORITY + " INTEGER"
                     + ")";
     //
     private static DatabaseHelper sInstance;
