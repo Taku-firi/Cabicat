@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentView="@+id/fileitem_view_content"
+    app:leftMenuView="@id/fileitem_view_left"
     app:rightMenuView="@+id/fileitem_view_right">
 
 
@@ -63,7 +64,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/fileitem_more_choice"
+            android:id="@+id/fileitem_remove_choice"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/fileitemRightMoreBackColor"
@@ -72,7 +73,7 @@
             android:paddingRight="16dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
-            android:text="@string/fileitem_adapterunit_normallayer_more"
+            android:text="@string/fileitem_adapterunit_normallayer_remove"
             android:textColor="@color/fileitemRightMoreTextColor"
             android:textSize="14sp"/>
 
@@ -89,5 +90,31 @@
             android:text="@string/fileitem_adapterunit_normallayer_delete"
             android:textColor="@color/fileitemRightDeleteTextColor"
             android:textSize="14sp"/>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/fileitem_view_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fileitem_transfer_choice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/fileitemLeftTransferBackColor"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/fileitem_adapterunit_normallayer_transfer"
+            android:textColor="@color/fileitemLeftTransferTextColor"
+            android:textSize="14sp"/>
+
+
     </LinearLayout>
 </com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

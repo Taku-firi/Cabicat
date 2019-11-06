@@ -41,8 +41,8 @@ public class NormalLayerFragment extends Fragment {
         });
 
 //        mDatabase=getDatabase();
-        FileItem fi1=new FileItem("name1","path1",Long.valueOf(1));
-        FileItem fi2=new FileItem("name2","path2",Long.valueOf(2));
+        FileItem fi1=new FileItem("name1","path1",1);
+        FileItem fi2=new FileItem("name2","path2",2);
         List<FileItem> ls = new ArrayList<>();
         ls.add(fi1);
         ls.add(fi2);

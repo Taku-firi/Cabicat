@@ -8,7 +8,9 @@
     <color name="fileitemNameColor">#000000</color>
     <color name="fileitemPathColor">#A5A2A2</color>
     <color name="fileitemRightMoreBackColor">#1F8B97</color>
-    <color name="fileitemRightDeleteBackColor">#F44336</color>
     <color name="fileitemRightMoreTextColor">#FFFFFF</color>
+    <color name="fileitemRightDeleteBackColor">#F44336</color>
     <color name="fileitemRightDeleteTextColor">#FFFFFF</color>
+    <color name="fileitemLeftTransferBackColor">#4AC364</color>
+    <color name="fileitemLeftTransferTextColor">#FFFFFF</color>
 </resources>

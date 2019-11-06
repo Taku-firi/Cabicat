@@ -4,6 +4,10 @@
     <string name="title_normallayer">Normal Layer</string>
     <string name="title_secretlayer">Secret Layer</string>
     
-    <string name="fileitem_adapterunit_normallayer_more">More</string>
+    <string name="fileitem_adapterunit_normallayer_remove">Remove</string>
     <string name="fileitem_adapterunit_normallayer_delete">Delete</string>
+    <string name="fileitem_adapterunit_normallayer_transfer">Transfer to secret layer</string>
+    <string name="fileitem_adapterunit_secretlayer_remove">Remove</string>
+    <string name="fileitem_adapterunit_secretlayer_delete">Delete</string>
+    <string name="fileitem_adapterunit_secretlayer_transfer">Transfer to normal layer </string>
 </resources>
