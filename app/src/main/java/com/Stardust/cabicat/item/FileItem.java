@@ -12,7 +12,21 @@ public class FileItem {
     private int priority;
     SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+<<<<<<< Updated upstream
     public FileItem(String name, String path, Long filesize){
+=======
+    public FileItem(){
+
+    }
+    // used for display
+    public FileItem(String name, String path){
+        this.name = name;
+        this.path = path;
+    }
+
+    // used for add new fileitem to database
+    public FileItem(String name, String path, long filesize){
+>>>>>>> Stashed changes
         this.name = name;
         this.path = path;
         this.filesize = filesize;
