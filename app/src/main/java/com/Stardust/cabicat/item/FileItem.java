@@ -19,7 +19,38 @@ public class FileItem {
     @ColumnInfo(name = "file_size")
     private Long filesize;
 
+<<<<<<< Updated upstream
     @ColumnInfo(name = "added_date")
+=======
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setFilesize(Long filesize) {
+        this.filesize = filesize;
+    }
+
+    public void setAddeddate(String addeddate) {
+        this.addeddate = addeddate;
+    }
+
+    public void setCheckdate(String checkdate) {
+        this.checkdate = checkdate;
+    }
+
+    public SimpleDateFormat getDateformat() {
+        return dateformat;
+    }
+
+    public void setDateformat(SimpleDateFormat dateformat) {
+        this.dateformat = dateformat;
+    }
+
+>>>>>>> Stashed changes
     private String addeddate;
 
     @ColumnInfo(name = "check_date")
@@ -29,6 +60,7 @@ public class FileItem {
     private int priority;
     SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //    String dateStr = dataformat.format(date);
+
 
     public FileItem(String name, String path, Long filesize){
         this.name = name;
