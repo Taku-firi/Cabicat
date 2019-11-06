@@ -22,7 +22,7 @@
             android:scaleType="fitStart"
             android:scaleX="0.6"
             android:scaleY="0.6"
-            android:src="@drawable/ic_fileitem_secret_black_24dp"/>
+            android:src="@drawable/ic_fileitem_normal_black_24dp"/>
 
         <LinearLayout
             android:id="@+id/layout_fileitem_info"

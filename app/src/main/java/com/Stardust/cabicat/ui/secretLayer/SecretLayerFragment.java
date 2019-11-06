@@ -11,12 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Stardust.cabicat.R;
+import com.Stardust.cabicat.adapter.FileAdapter;
+import com.Stardust.cabicat.item.FileItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecretLayerFragment extends Fragment {
-
+    //    private DatabaseHelper mDatabase;
     private SecretLayerViewModel secretlayerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,6 +40,18 @@ public class SecretLayerFragment extends Fragment {
         });
 
         RecyclerView rvsecret = root.findViewById(R.id.recyclerview_secretlayer);
+
+        //        mDatabase=getDatabase();
+        FileItem fi1=new FileItem("name3","path3",Long.valueOf(1));
+        FileItem fi2=new FileItem("name4","path4",Long.valueOf(2));
+        List<FileItem> ls = new ArrayList<>();
+        ls.add(fi1);
+        ls.add(fi2);
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerview_secretlayer);
+        FileAdapter fileAdapter = new FileAdapter(R.layout.fileitem_adapterunit_secretlayer,ls);
+        recyclerView.setAdapter(fileAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(),DividerItemDecoration.VERTICAL));
 
         return root;
     }
