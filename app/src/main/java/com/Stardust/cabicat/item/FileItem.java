@@ -12,6 +12,9 @@ public class FileItem {
     private int priority;
     SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
+    public FileItem(){
+        
+    }
     // used for display
     public FileItem(String name, String path){
         this.name = name;
