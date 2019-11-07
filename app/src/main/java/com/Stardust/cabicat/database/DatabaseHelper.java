@@ -66,19 +66,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return sInstance;
     }
-//     Initialisation
-//    public List<FileItem> loadDB() {
-//        List<FileItem> fileitems = new ArrayList<>();
-//        for (FileItem fileItem : getAllTable(0)) {
-//            fileitems.add(fileItem);
-//        }
-//        return fileitems;
-//    }
+
+    // while create
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_NORMALLAYER);
         db.execSQL(CREATE_TABLE_SECRETLAYER);
     }
+
+    // while upgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NORMALLAYER);
@@ -99,149 +95,129 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(CHECKDATE, fileItem.getCheckdate());
         values.put(PRIORITY, fileItem.getPriority());
         Log.d(TAG, "createFileItem: " + fileItem.getPath());
-        if (i == 0) {
-            return db.insert(TABLE_NORMALLAYER, null, values);
-        } else {
-            return db.insert(TABLE_SECRETLAYER, null, values);
-        }
-    }
-    // get a whole table (one of two)
-    // i=0 -> normal layer; i=1 -> secret layer
-    public List<FileItem> getAllTable(int i) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        if (i == 0) {
-            String selectQuery = "SELECT * FROM " + TABLE_NORMALLAYER;
-            Cursor c = db.rawQuery(selectQuery, null);
-            List<FileItem> fileitemList = new ArrayList<>();
-            if (c.moveToFirst()) {
-                do {
-                    FileItem fileItem = new FileItem(
-                            c.getString(c.getColumnIndex(PATH)),
-                            c.getString(c.getColumnIndex(NAME)),
-                            c.getLong(c.getColumnIndex(SIZE)),
-                            c.getString(c.getColumnIndex(ADDEDDATE)),
-                            c.getString(c.getColumnIndex(CHECKDATE)),
-                            c.getInt(c.getColumnIndex(PRIORITY))
-                    );
-                    fileitemList.add(fileItem);
-                } while (c.moveToNext());
-            }
-            c.close();
-            return fileitemList;
-        } else {
-            String selectQuery = "SELECT * FROM " + TABLE_SECRETLAYER;
-            Cursor c = db.rawQuery(selectQuery, null);
-            List<FileItem> fileitemList = new ArrayList<>();
-            if (c.moveToFirst()) {
-                do {
-                    FileItem fileItem = new FileItem(
-                            c.getString(c.getColumnIndex(PATH)),
-                            c.getString(c.getColumnIndex(NAME)),
-                            c.getLong(c.getColumnIndex(SIZE)),
-                            c.getString(c.getColumnIndex(ADDEDDATE)),
-                            c.getString(c.getColumnIndex(CHECKDATE)),
-                            c.getInt(c.getColumnIndex(PRIORITY))
-                    );
-                    fileitemList.add(fileItem);
-                } while (c.moveToNext());
-            }
-            c.close();
-            return fileitemList;
+        switch (i){
+            case 0:
+                return db.insert(TABLE_NORMALLAYER, null, values);
+            case 1:
+                return db.insert(TABLE_SECRETLAYER, null, values);
+            default:
+                return -1;
         }
     }
 
+    // get all the fileitems in a layer
     // i=0 -> normal layer; i=1 -> secret layer
-    // from a path to get all item
+    public List<FileItem> getAllItems(int i) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<FileItem> fileitemList = new ArrayList<>();
+        switch (i){
+            case 0:
+                String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER;
+                Cursor c0 = db.rawQuery(selectQuery0, null);
+                if (c0.moveToFirst()) {
+                    do {
+                        FileItem fileItem = new FileItem(
+                                c0.getString(c0.getColumnIndex(PATH)),
+                                c0.getString(c0.getColumnIndex(NAME)),
+                                c0.getLong(c0.getColumnIndex(SIZE)),
+                                c0.getString(c0.getColumnIndex(ADDEDDATE)),
+                                c0.getString(c0.getColumnIndex(CHECKDATE)),
+                                c0.getInt(c0.getColumnIndex(PRIORITY))
+                        );
+                        fileitemList.add(fileItem);
+                    } while (c0.moveToNext());
+                }
+                c0.close();
+                break;
+            case 1:
+                String selectQuery1 = "SELECT * FROM " + TABLE_SECRETLAYER;
+                Cursor c1 = db.rawQuery(selectQuery1, null);
+                if (c1.moveToFirst()) {
+                    do {
+                        FileItem fileItem = new FileItem(
+                                c1.getString(c1.getColumnIndex(PATH)),
+                                c1.getString(c1.getColumnIndex(NAME)),
+                                c1.getLong(c1.getColumnIndex(SIZE)),
+                                c1.getString(c1.getColumnIndex(ADDEDDATE)),
+                                c1.getString(c1.getColumnIndex(CHECKDATE)),
+                                c1.getInt(c1.getColumnIndex(PRIORITY))
+                        );
+                        fileitemList.add(fileItem);
+                    } while (c1.moveToNext());
+                }
+                c1.close();
+                break;
+            default:
+                break;
+        }
+        return fileitemList;
+    }
+
+    // i=0 -> normal layer; i=1 -> secret layer
+    // get a particular item by path
     public FileItem getFileItemByPath(String path, int i) {
         SQLiteDatabase db = this.getReadableDatabase();
-        if (i == 0) {
+        switch (i){
+            case 0:
+                String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER
+                        + " WHERE " + PATH + " = '" + path + "'";
+                Cursor c0 = db.rawQuery(selectQuery0, null);
+                if (c0 != null) {
+                    c0.moveToFirst();
+                }
+                FileItem fileItem0 = new FileItem(
+                        c0.getString(c0.getColumnIndex(PATH)),
+                        c0.getString(c0.getColumnIndex(NAME)),
+                        c0.getLong(c0.getColumnIndex(SIZE)),
+                        c0.getString(c0.getColumnIndex(ADDEDDATE)),
+                        c0.getString(c0.getColumnIndex(CHECKDATE)),
+                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                );
+                c0.close();
+                return fileItem0;
 
-            String selectQuery = "SELECT * FROM " + TABLE_NORMALLAYER
-                    + " WHERE " + PATH + " = '" + path + "'";
-            Cursor c = db.rawQuery(selectQuery, null);
-            if (c != null) {
-                c.moveToFirst();
-            }
-            FileItem fileItem = new FileItem(
-                    c.getString(c.getColumnIndex(PATH)),
-                    c.getString(c.getColumnIndex(NAME)),
-                    c.getLong(c.getColumnIndex(SIZE)),
-                    c.getString(c.getColumnIndex(ADDEDDATE)),
-                    c.getString(c.getColumnIndex(CHECKDATE)),
-                    c.getInt(c.getColumnIndex(PRIORITY))
-            );
-            c.close();
-            return fileItem;
-        } else {
-            String selectQuery = "SELECT * FROM " + TABLE_SECRETLAYER
-                    + " WHERE " + PATH + " = '" + path + "'";
-            Cursor c = db.rawQuery(selectQuery, null);
-            if (c != null) {
-                c.moveToFirst();
-            }
-            FileItem fileItem = new FileItem(
-                    c.getString(c.getColumnIndex(PATH)),
-                    c.getString(c.getColumnIndex(NAME)),
-                    c.getLong(c.getColumnIndex(SIZE)),
-                    c.getString(c.getColumnIndex(ADDEDDATE)),
-                    c.getString(c.getColumnIndex(CHECKDATE)),
-                    c.getInt(c.getColumnIndex(PRIORITY))
-            );
-            c.close();
-            return fileItem;
+            case 1:
+                String selectQuery1 = "SELECT * FROM " + TABLE_SECRETLAYER
+                        + " WHERE " + PATH + " = '" + path + "'";
+                Cursor c1 = db.rawQuery(selectQuery1, null);
+                if (c1 != null) {
+                    c1.moveToFirst();
+                }
+                FileItem fileItem1 = new FileItem(
+                        c1.getString(c1.getColumnIndex(PATH)),
+                        c1.getString(c1.getColumnIndex(NAME)),
+                        c1.getLong(c1.getColumnIndex(SIZE)),
+                        c1.getString(c1.getColumnIndex(ADDEDDATE)),
+                        c1.getString(c1.getColumnIndex(CHECKDATE)),
+                        c1.getInt(c1.getColumnIndex(PRIORITY))
+                );
+                c1.close();
+                return fileItem1;
+            default:
+                return new FileItem();
         }
     }
 
-    public String getNameByPath(String path, int i) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        if (i == 0) {
-
-            String selectQuery = "SELECT * FROM " + TABLE_NORMALLAYER
-                    + " WHERE " + PATH + " = '" + path + "'";
-            Cursor c = db.rawQuery(selectQuery, null);
-            if (c != null) {
-                c.moveToFirst();
-            }
-            FileItem fileItem = new FileItem(
-                    c.getString(c.getColumnIndex(PATH)),
-                    c.getString(c.getColumnIndex(NAME))
-
-            );
-            c.close();
-            return fileItem.getName();
-        } else {
-            String selectQuery = "SELECT * FROM " + TABLE_SECRETLAYER
-                    + " WHERE " + PATH + " = '" + path + "'";
-            Cursor c = db.rawQuery(selectQuery, null);
-            if (c != null) {
-                c.moveToFirst();
-            }
-            FileItem fileItem = new FileItem(
-                    c.getString(c.getColumnIndex(PATH)),
-                    c.getString(c.getColumnIndex(NAME))
-
-            );
-            c.close();
-            return fileItem.getName();
-        }
-    }
 
     // delete item by path
     // i=0 -> normal layer; i=1 -> secret layer
     public void deleteFileItem(String path, int i) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        if (i == 0) {
-            db.delete(TABLE_NORMALLAYER,
-                    PATH + " = ?",
-                    new String[]{String.valueOf(path)});
-            Log.d(TAG, "deleteNote: ");
-        } else {
-            db.delete(TABLE_SECRETLAYER,
-                    PATH + " = ?",
-                    new String[]{String.valueOf(path)});
-            Log.d(TAG, "deleteNote: ");
+        switch (i){
+            case 0:
+                db.delete(TABLE_NORMALLAYER,
+                        PATH + " = ?",
+                        new String[]{String.valueOf(path)});
+            case 1:
+                db.delete(TABLE_SECRETLAYER,
+                        PATH + " = ?",
+                        new String[]{String.valueOf(path)});
+            default:
+                break;
         }
+
+        Log.d(TAG, "delete: "+ path);
     }
 }
 
