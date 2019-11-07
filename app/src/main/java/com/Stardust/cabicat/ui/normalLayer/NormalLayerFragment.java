@@ -15,15 +15,16 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Stardust.cabicat.MainActivity;
 import com.Stardust.cabicat.R;
-import com.Stardust.cabicat.adapter.FileAdapter;
+import com.Stardust.cabicat.adapter.FileAdapterNormallayer;
+import com.Stardust.cabicat.database.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class NormalLayerFragment extends Fragment {
-//    private DatabaseHelper mDatabase;
+    private DatabaseHelper mDatabase;
 
     private NormalLayerViewModel normallayerViewModel;
 
@@ -40,15 +41,21 @@ public class NormalLayerFragment extends Fragment {
             }
         });
 
-//        mDatabase=getDatabase();
-        FileItem fi1=new FileItem("name1","path1",1);
-        FileItem fi2=new FileItem("name2","path2",2);
-        List<FileItem> ls = new ArrayList<>();
-        ls.add(fi1);
-        ls.add(fi2);
+        mDatabase=((MainActivity)getActivity()).getDatabase();
+
+        // fileitems for test
+//        FileItem f1 = new FileItem("name_n_1","path_n_1",2);
+//        FileItem f2 = new FileItem("name_n_2","path_n_2",2);
+//        FileItem f3 = new FileItem("name_n_3","path_n_3",2);
+//        mDatabase.createFileItem(f1,0);
+//        mDatabase.createFileItem(f2,0);
+//        mDatabase.createFileItem(f3,0);
+
+        List<FileItem> ls = mDatabase.getAllItems(0);
+
         RecyclerView recyclerView = root.findViewById(R.id.recyclerview_normallayer);
-        FileAdapter fileAdapter = new FileAdapter(R.layout.fileitem_adapterunit_normallayer,ls);
-        recyclerView.setAdapter(fileAdapter);
+        FileAdapterNormallayer fileAdapterNormallayer = new FileAdapterNormallayer(R.layout.fileitem_adapterunit_normallayer,ls,mDatabase);
+        recyclerView.setAdapter(fileAdapterNormallayer);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(),DividerItemDecoration.VERTICAL));
 

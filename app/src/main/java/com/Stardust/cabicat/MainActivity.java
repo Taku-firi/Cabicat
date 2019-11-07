@@ -26,10 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         mDatabase= DatabaseHelper.getInstance(getApplicationContext());
         mDatabase.getWritableDatabase();
-//        FileItem fi1=new FileItem("name1","path3",1);
-//        FileItem fi2=new FileItem("name2","path4",2);
-//        mDatabase.createFileItem(fi1,0);
-//        mDatabase.createFileItem(fi2,1);
+
 
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();

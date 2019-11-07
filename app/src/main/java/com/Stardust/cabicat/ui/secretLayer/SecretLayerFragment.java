@@ -15,15 +15,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.Stardust.cabicat.MainActivity;
 import com.Stardust.cabicat.R;
-import com.Stardust.cabicat.adapter.FileAdapter;
+import com.Stardust.cabicat.adapter.FileAdapterSecretlayer;
+import com.Stardust.cabicat.database.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SecretLayerFragment extends Fragment {
-    //    private DatabaseHelper mDatabase;
+    private DatabaseHelper mDatabase;
+
     private SecretLayerViewModel secretlayerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,17 +41,21 @@ public class SecretLayerFragment extends Fragment {
             }
         });
 
-        RecyclerView rvsecret = root.findViewById(R.id.recyclerview_secretlayer);
+        mDatabase = ((MainActivity)getActivity()).getDatabase();
 
-        //        mDatabase=getDatabase();
-        FileItem fi1=new FileItem("name3","path3",Long.valueOf(1));
-        FileItem fi2=new FileItem("name4","path4",Long.valueOf(2));
-        List<FileItem> ls = new ArrayList<>();
-        ls.add(fi1);
-        ls.add(fi2);
+        // fileitems for test
+//        FileItem f1 = new FileItem("name_s_1","path_s_1",2);
+//        FileItem f2 = new FileItem("name_s_2","path_s_2",2);
+//        FileItem f3 = new FileItem("name_s_3","path_s_3",2);
+//        mDatabase.createFileItem(f1,1);
+//        mDatabase.createFileItem(f2,1);
+//        mDatabase.createFileItem(f3,1);
+
+        List<FileItem> ls = mDatabase.getAllItems(1);
+
         RecyclerView recyclerView = root.findViewById(R.id.recyclerview_secretlayer);
-        FileAdapter fileAdapter = new FileAdapter(R.layout.fileitem_adapterunit_secretlayer,ls);
-        recyclerView.setAdapter(fileAdapter);
+        FileAdapterSecretlayer fileAdapterSecretlayer = new FileAdapterSecretlayer(R.layout.fileitem_adapterunit_secretlayer,ls,mDatabase);
+        recyclerView.setAdapter(fileAdapterSecretlayer);
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(),DividerItemDecoration.VERTICAL));
 

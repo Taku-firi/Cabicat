@@ -117,8 +117,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (c0.moveToFirst()) {
                     do {
                         FileItem fileItem = new FileItem(
-                                c0.getString(c0.getColumnIndex(PATH)),
                                 c0.getString(c0.getColumnIndex(NAME)),
+                                c0.getString(c0.getColumnIndex(PATH)),
                                 c0.getLong(c0.getColumnIndex(SIZE)),
                                 c0.getString(c0.getColumnIndex(ADDEDDATE)),
                                 c0.getString(c0.getColumnIndex(CHECKDATE)),
@@ -135,8 +135,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 if (c1.moveToFirst()) {
                     do {
                         FileItem fileItem = new FileItem(
-                                c1.getString(c1.getColumnIndex(PATH)),
                                 c1.getString(c1.getColumnIndex(NAME)),
+                                c1.getString(c1.getColumnIndex(PATH)),
                                 c1.getLong(c1.getColumnIndex(SIZE)),
                                 c1.getString(c1.getColumnIndex(ADDEDDATE)),
                                 c1.getString(c1.getColumnIndex(CHECKDATE)),
@@ -166,8 +166,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     c0.moveToFirst();
                 }
                 FileItem fileItem0 = new FileItem(
-                        c0.getString(c0.getColumnIndex(PATH)),
                         c0.getString(c0.getColumnIndex(NAME)),
+                        c0.getString(c0.getColumnIndex(PATH)),
                         c0.getLong(c0.getColumnIndex(SIZE)),
                         c0.getString(c0.getColumnIndex(ADDEDDATE)),
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
@@ -184,8 +184,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     c1.moveToFirst();
                 }
                 FileItem fileItem1 = new FileItem(
-                        c1.getString(c1.getColumnIndex(PATH)),
                         c1.getString(c1.getColumnIndex(NAME)),
+                        c1.getString(c1.getColumnIndex(PATH)),
                         c1.getLong(c1.getColumnIndex(SIZE)),
                         c1.getString(c1.getColumnIndex(ADDEDDATE)),
                         c1.getString(c1.getColumnIndex(CHECKDATE)),
@@ -209,10 +209,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.delete(TABLE_NORMALLAYER,
                         PATH + " = ?",
                         new String[]{String.valueOf(path)});
+                break;
             case 1:
                 db.delete(TABLE_SECRETLAYER,
                         PATH + " = ?",
                         new String[]{String.valueOf(path)});
+                break;
             default:
                 break;
         }

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.Stardust.cabicat.R;
+import com.Stardust.cabicat.database.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -11,14 +12,12 @@ import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 
 import java.util.List;
 
-public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
-//    private DatabaseHelper mDatabase;
+public class FileAdapterNormallayer extends BaseQuickAdapter<FileItem, BaseViewHolder> {
+    private DatabaseHelper mDatabase;
 
-//    public FileAdapter(DatabaseHelper mDatabase, int layoutResId, List<FileItem> data){
-//        super(layoutResId,data);
-//    }
-    public FileAdapter(int layoutResId, List<FileItem> data){
+    public FileAdapterNormallayer(int layoutResId, List<FileItem> data, DatabaseHelper db){
         super(layoutResId,data);
+        this.mDatabase = db;
     }
     @Override
     protected void convert(final BaseViewHolder viewHolder, final FileItem item) {
@@ -30,7 +29,7 @@ public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
         viewHolder.getView(R.id.fileitem_view_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"You clicked" + item.getName(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(),"You clicked " + item.getName(),Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -40,6 +39,20 @@ public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),"You clicked transfer" ,Toast.LENGTH_SHORT).show();
 
+                boolean hasTransfered = false;
+                int pos = viewHolder.getAdapterPosition();
+
+                // Database operation here :
+                mDatabase.createFileItem(item,1);
+                mDatabase.deleteFileItem(item.getPath(),0);
+
+                hasTransfered = true;
+
+                if (hasTransfered){
+                    remove(pos);
+                    notifyItemRemoved(pos);
+                }
+
             }
         });
 
@@ -48,10 +61,21 @@ public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
         viewHolder.getView(R.id.fileitem_remove_choice).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EasySwipeMenuLayout easySwipeMenuLayout = viewHolder.getView(R.id.layout_fileitem_menu);
-                easySwipeMenuLayout.resetStatus();
 
                 Toast.makeText(view.getContext(),"You clicked remove" ,Toast.LENGTH_SHORT).show();
+
+                boolean hasRemoved = false;
+                int pos = viewHolder.getAdapterPosition();
+
+                //  Database operation here :
+                mDatabase.deleteFileItem(item.getPath(),0);
+
+                hasRemoved = true;
+
+                if (hasRemoved){
+                    remove(pos);
+                    notifyItemRemoved(pos);
+                }
             }
         });
 
@@ -63,14 +87,16 @@ public class FileAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> {
 
                 Toast.makeText(view.getContext(),"You clicked delete" ,Toast.LENGTH_SHORT).show();
 
-                boolean hasRemoved = false;
+                boolean hasDeleted = false;
                 int pos = viewHolder.getAdapterPosition();
 
-//                Database operation here :
-//                mDatabase.deleteFileItem(getData().get(pos));
-                hasRemoved = true;
+                //  Database operation here :
+                mDatabase.deleteFileItem(item.getPath(),0);
+                //  Delete file here :
 
-                if (hasRemoved){
+                hasDeleted = true;
+
+                if (hasDeleted){
                     remove(pos);
                     notifyItemRemoved(pos);
                 }
