@@ -12,19 +12,23 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     // Database name
-    private static final String DATABASE_NAME = "fileitem.db";
+    private static final String DATABASE_NAME = "cabicat_db";
+
     // Database version
     private static final int DATABASE_VERSION = 1;
+
     // Table names
     private static final String TABLE_NORMALLAYER = "normallayer";
     private static final String TABLE_SECRETLAYER = "secretlayer";
-    // Column names for both  TABLE_NORMALLAYER and TABLE_SECRETLAYER table
+
+    // Column names for both TABLE_NORMALLAYER and TABLE_SECRETLAYER
     private static final String PATH = "path";
     private static final String NAME = "name";
     private static final String SIZE = "size";
     private static final String ADDEDDATE = "addeddate";
     private static final String CHECKDATE = "checkdate";
     private static final String PRIORITY = "priority";
+
     // TABLE_NORMALLAYER table create statements
     private static final String CREATE_TABLE_NORMALLAYER =
             "CREATE TABLE " + TABLE_NORMALLAYER
@@ -36,6 +40,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + CHECKDATE + " DATETIME,"
                     + PRIORITY + " INTEGER"
                     + ")";
+
+    // TABLE_SECRETLAYER table create statements
     private static final String CREATE_TABLE_SECRETLAYER =
             "CREATE TABLE " + TABLE_SECRETLAYER
                     + "("
@@ -46,12 +52,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + CHECKDATE + " DATETIME,"
                     + PRIORITY + " INTEGER"
                     + ")";
-    //
+
+    // Singleton instance
     private static DatabaseHelper sInstance;
+
     private DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        loadDB();
     }
+
     public static synchronized DatabaseHelper getInstance(Context context) {
         if (sInstance == null) {
             sInstance = new DatabaseHelper(context);
@@ -59,24 +67,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sInstance;
     }
 //     Initialisation
-    public List<FileItem> loadDB() {
-        List<FileItem> fileitems = new ArrayList<>();
-        for (FileItem fileItem : getAllTable(0)) {
-            fileitems.add(fileItem);
-        }
-        return fileitems;
-    }
+//    public List<FileItem> loadDB() {
+//        List<FileItem> fileitems = new ArrayList<>();
+//        for (FileItem fileItem : getAllTable(0)) {
+//            fileitems.add(fileItem);
+//        }
+//        return fileitems;
+//    }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_NORMALLAYER);
         db.execSQL(CREATE_TABLE_SECRETLAYER);
     }
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NORMALLAYER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SECRETLAYER);
 
+        onCreate(db);
     }
+
+
     // i=0 -> add to normal layer,  i=1 -> add to secret layer
     public long createFileItem(FileItem fileItem, int i) {
         SQLiteDatabase db = this.getWritableDatabase();
