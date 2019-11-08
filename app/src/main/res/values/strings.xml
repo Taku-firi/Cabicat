@@ -3,7 +3,8 @@
     <string name="title_home">Home</string>
     <string name="title_normallayer">Normal Layer</string>
     <string name="title_secretlayer">Secret Layer</string>
-    
+
+    // string for fileitem adapter
     <string name="fileitem_adapterunit_normallayer_remove">Remove</string>
     <string name="fileitem_adapterunit_normallayer_delete">Delete</string>
     <string name="fileitem_adapterunit_normallayer_transfer">Transfer to secret layer</string>
@@ -11,6 +12,10 @@
     <string name="fileitem_adapterunit_secretlayer_delete">Delete</string>
     <string name="fileitem_adapterunit_secretlayer_transfer">Transfer to normal layer </string>
 
-    <string name="welcome_text">Welcome to Cabicat</string>
-    <string name="home_latest_files">Latest Files</string>
+    // string for welcome page
+    <string name="welcomepage_text">Welcome to Cabicat</string>
+
+
+    // string for home fragment
+    <string name="home_latestfiles">Latest Files</string>
 </resources>

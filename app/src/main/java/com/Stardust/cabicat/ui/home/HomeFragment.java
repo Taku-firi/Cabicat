@@ -26,19 +26,25 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
+//        final TextView textView = root.findViewById(R.id.text_home);
+//        homeViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(Html.fromHtml("<font color = '#68228B'>" + s + "</font>"));
+//            }
+//        });
+//
+        ImageView imageViewtop = root.findViewById(R.id.home_top_imageview);
+        imageViewtop.setAlpha(0.5f);
+
+        final TextView textViewlatest = root.findViewById(R.id.home_text_latestfiles);
+        homeViewModel.getTextLatest().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(Html.fromHtml("<font color = '#68228B'>" + s + "</font>"));
+            public void onChanged(String s) {
+                textViewlatest.setText("Latest Files");
             }
         });
 
-        final ImageView image1 = root.findViewById(R.id.imageView4);
-        image1.setAlpha(0.5f);
-
-        final TextView home_text1 = root.findViewById(R.id.home_text1);
-        home_text1.setText(Html.fromHtml("<font color = '#68228B'>" + home_text1.getText().toString() + "</font>"));
         return root;
     }
 }

@@ -13,4 +13,7 @@
     <color name="fileitemRightDeleteTextColor">#FFFFFF</color>
     <color name="fileitemLeftTransferBackColor">#4AC364</color>
     <color name="fileitemLeftTransferTextColor">#FFFFFF</color>
+
+    // color used for home fragment
+    <color name="home_text">#68228B</color>
 </resources>
