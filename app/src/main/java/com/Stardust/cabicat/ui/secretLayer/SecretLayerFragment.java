@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -20,20 +21,33 @@ import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.adapter.FileAdapterSecretlayer;
 import com.Stardust.cabicat.database.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
+import com.Stardust.cabicat.item.PwdCheckDialog;
 
 import java.util.List;
 
 public class SecretLayerFragment extends Fragment {
+    private boolean verified = false;
+    private boolean alreadyChecked = false;
     private DatabaseHelper mDatabase;
 
     private SecretLayerViewModel secretlayerViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         secretlayerViewModel =
                 ViewModelProviders.of(this).get(SecretLayerViewModel.class);
         View root = inflater.inflate(R.layout.fragment_secretlayer, container, false);
         final TextView textView = root.findViewById(R.id.text_secretlayer);
+        final RecyclerView recyclerView = root.findViewById(R.id.recyclerview_secretlayer);
+
+
+        mDatabase = ((MainActivity) getActivity()).getDatabase();
+        recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(), DividerItemDecoration.VERTICAL));
+
+        // live data example (will be removed)
         secretlayerViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -41,9 +55,22 @@ public class SecretLayerFragment extends Fragment {
             }
         });
 
-        mDatabase = ((MainActivity)getActivity()).getDatabase();
+        if (alreadyChecked){
+            List<FileItem> ls = mDatabase.getAllItems(1);
+            FileAdapterSecretlayer fileAdapterSecretlayer = new FileAdapterSecretlayer(R.layout.fileitem_adapterunit_secretlayer, ls, mDatabase);
+            recyclerView.setAdapter(fileAdapterSecretlayer);
+        }else {
 
-        // fileitems for test
+            // Check password
+            final PwdCheckDialog pwdCheckDialog = new PwdCheckDialog(getActivity());
+            pwdCheckDialog.setPasswordCallback(new PwdCheckDialog.PasswordCallback() {
+                @Override
+                public void callback(String password) {
+                    if ("000000".equals(password)) {
+                        pwdCheckDialog.dismiss();
+                        verified = true;
+
+                        // fileitems for test
 //        FileItem f1 = new FileItem("name_s_1","path_s_1",2);
 //        FileItem f2 = new FileItem("name_s_2","path_s_2",2);
 //        FileItem f3 = new FileItem("name_s_3","path_s_3",2);
@@ -51,14 +78,22 @@ public class SecretLayerFragment extends Fragment {
 //        mDatabase.createFileItem(f2,1);
 //        mDatabase.createFileItem(f3,1);
 
-        List<FileItem> ls = mDatabase.getAllItems(1);
+                        List<FileItem> ls = mDatabase.getAllItems(1);
 
-        RecyclerView recyclerView = root.findViewById(R.id.recyclerview_secretlayer);
-        FileAdapterSecretlayer fileAdapterSecretlayer = new FileAdapterSecretlayer(R.layout.fileitem_adapterunit_secretlayer,ls,mDatabase);
-        recyclerView.setAdapter(fileAdapterSecretlayer);
-        recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(),DividerItemDecoration.VERTICAL));
-
+                        FileAdapterSecretlayer fileAdapterSecretlayer = new FileAdapterSecretlayer(R.layout.fileitem_adapterunit_secretlayer, ls, mDatabase);
+                        recyclerView.setAdapter(fileAdapterSecretlayer);
+                        Toast.makeText(getActivity(), "Identity Verified", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Access Denied" + password, Toast.LENGTH_SHORT).show();
+                        pwdCheckDialog.clearPasswordText();
+                    }
+                }
+            });
+            pwdCheckDialog.clearPasswordText();
+            pwdCheckDialog.show();
+        }
         return root;
     }
+
+
 }

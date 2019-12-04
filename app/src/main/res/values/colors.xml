@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="colorTransparent">#00000000</color>
+
     // color used for FileItem
     <color name="fileitemNameColor">#000000</color>
     <color name="fileitemPathColor">#A5A2A2</color>
@@ -16,4 +18,14 @@
 
     // color used for home fragment
     <color name="home_text">#68228B</color>
+
+    // color used for dialog
+    <color name="dialog_gray_hint">#ababab</color>
+    <color name="dialog_gray_lable">#666666</color>
+    <color name="gray_general_title">#999999</color>
+    <color name="gray_general_desc">#adadad</color>
+    <color name="dialog_middle_divider_color">#ededed</color>
+    <color name="dialog_divider_color">#ffdddddd</color>
+    <color name="black_general_label">#666666</color>
+    <color name="black_general_title">#333333</color>
 </resources>
