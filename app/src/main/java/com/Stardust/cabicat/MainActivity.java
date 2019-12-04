@@ -1,5 +1,6 @@
 package com.Stardust.cabicat;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.Stardust.cabicat.database.DatabaseHelper;
@@ -36,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+
+        SharedPreferences.Editor editor = getSharedPreferences("cabidata",MODE_PRIVATE).edit();
+        editor.putBoolean("checked",false);
+        editor.putString("pwd","123456");
+        editor.apply();
     }
 
 

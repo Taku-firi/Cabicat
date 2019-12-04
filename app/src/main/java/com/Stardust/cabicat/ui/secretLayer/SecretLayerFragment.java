@@ -1,5 +1,7 @@
 package com.Stardust.cabicat.ui.secretLayer;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +28,7 @@ import com.Stardust.cabicat.item.PwdCheckDialog;
 import java.util.List;
 
 public class SecretLayerFragment extends Fragment {
-    private boolean verified = false;
-    private boolean alreadyChecked = false;
+
     private DatabaseHelper mDatabase;
 
     private SecretLayerViewModel secretlayerViewModel;
@@ -47,6 +48,7 @@ public class SecretLayerFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(root.getContext()));
         recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(), DividerItemDecoration.VERTICAL));
 
+
         // live data example (will be removed)
         secretlayerViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -54,6 +56,9 @@ public class SecretLayerFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("cabidata",Context.MODE_PRIVATE);
+        boolean alreadyChecked = preferences.getBoolean("checked",false);
 
         if (alreadyChecked){
             List<FileItem> ls = mDatabase.getAllItems(1);
@@ -66,9 +71,11 @@ public class SecretLayerFragment extends Fragment {
             pwdCheckDialog.setPasswordCallback(new PwdCheckDialog.PasswordCallback() {
                 @Override
                 public void callback(String password) {
-                    if ("000000".equals(password)) {
+                    SharedPreferences pref = getActivity().getSharedPreferences("cabidata", Context.MODE_PRIVATE);
+                    String pwd = pref.getString("pwd","");
+
+                    if (pwd.equals(password)) {
                         pwdCheckDialog.dismiss();
-                        verified = true;
 
                         // fileitems for test
 //        FileItem f1 = new FileItem("name_s_1","path_s_1",2);
@@ -83,6 +90,9 @@ public class SecretLayerFragment extends Fragment {
                         FileAdapterSecretlayer fileAdapterSecretlayer = new FileAdapterSecretlayer(R.layout.fileitem_adapterunit_secretlayer, ls, mDatabase);
                         recyclerView.setAdapter(fileAdapterSecretlayer);
                         Toast.makeText(getActivity(), "Identity Verified", Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = getActivity().getSharedPreferences("cabidata",Context.MODE_PRIVATE).edit();
+                        editor.putBoolean("checked",true);
+                        editor.apply();
                     } else {
                         Toast.makeText(getActivity(), "Access Denied" + password, Toast.LENGTH_SHORT).show();
                         pwdCheckDialog.clearPasswordText();
