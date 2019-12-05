@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.Stardust.cabicat.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_fileManager"
+            app:destination="@id/fileManager" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_normallayer"
@@ -22,4 +26,8 @@
         android:name="com.Stardust.cabicat.ui.secretLayer.SecretLayerFragment"
         android:label="@string/title_secretlayer"
         tools:layout="@layout/fragment_secretlayer" />
+    <activity
+        android:id="@+id/fileManager"
+        android:name="com.Stardust.cabicat.filemanager.FileManager"
+        android:label="FileManager" />
 </navigation>
