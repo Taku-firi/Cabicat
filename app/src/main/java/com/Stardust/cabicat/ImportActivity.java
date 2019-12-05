@@ -1,10 +1,12 @@
-package com.Stardust.cabicat.filemanager;
+package com.Stardust.cabicat;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
@@ -19,31 +21,34 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
-import com.Stardust.cabicat.MainActivity;
-import com.Stardust.cabicat.R;
-import com.Stardust.cabicat.database.DatabaseHelper;
+import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 
 import java.io.File;
 import java.io.FileInputStream;
 
-public class FileManager extends MainActivity {
+public class ImportActivity extends MainActivity {
 
-    Button button,button2;
-    TextView tv,tv2;
+    Button btnNormal, btnSecret;
+//    TextView tv,tv2;
     boolean flag = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
-        tv = findViewById(R.id.tv);
-        tv2 = findViewById(R.id.tv2);
-        button = findViewById(R.id.button13);
-        button2 = findViewById(R.id.button14);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        requestExternalStorage();
+
+//        tv = findViewById(R.id.tv);
+//        tv2 = findViewById(R.id.tv2);
+        btnNormal = findViewById(R.id.import_btn_normallayer);
+        btnSecret = findViewById(R.id.import_btn_secretlayer);
+
+
+        btnNormal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 flag=true;
@@ -57,7 +62,7 @@ public class FileManager extends MainActivity {
                 startActivityForResult(intent, 1);
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() {
+        btnSecret.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                NavController controller = Navigation.findNavController(view);
@@ -106,8 +111,8 @@ public class FileManager extends MainActivity {
 
             this.filePath = getPath(this, uri);
             fileName = this.filePath.substring(this.filePath.lastIndexOf("/") + 1, this.filePath.length());
-            tv.setText(filePath);
-            tv2.setText(fileName);
+//            tv.setText(filePath);
+//            tv2.setText(fileName);
             Toast.makeText(this,"Successful!!!!:"+ this.filePath,Toast.LENGTH_SHORT).show();
             DatabaseHelper mDatabase = getDatabase();
 
@@ -122,7 +127,7 @@ public class FileManager extends MainActivity {
     }
 
     /**
-     * 专为Android4.4设计的从Uri获取文件绝对路径，以前的方法已不好使
+     *  get absolute path via Uri
      */
     @SuppressLint("NewApi")
     public String getPath(final Context context, final Uri uri) {
@@ -235,6 +240,20 @@ public class FileManager extends MainActivity {
      */
     public boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
+
+    public void requestExternalStorage() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
     }
 
 }

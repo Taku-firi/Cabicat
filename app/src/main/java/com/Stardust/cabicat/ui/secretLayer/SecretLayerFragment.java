@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.Stardust.cabicat.MainActivity;
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.adapter.FileAdapterSecretlayer;
-import com.Stardust.cabicat.database.DatabaseHelper;
+import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 import com.Stardust.cabicat.item.PwdCheckDialog;
 

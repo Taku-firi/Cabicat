@@ -28,6 +28,6 @@
         tools:layout="@layout/fragment_secretlayer" />
     <activity
         android:id="@+id/fileManager"
-        android:name="com.Stardust.cabicat.filemanager.FileManager"
+        android:name="com.Stardust.cabicat.ImportActivity"
         android:label="FileManager" />
 </navigation>

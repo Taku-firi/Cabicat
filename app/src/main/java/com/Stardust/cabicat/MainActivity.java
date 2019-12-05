@@ -3,9 +3,7 @@ package com.Stardust.cabicat;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.Stardust.cabicat.database.DatabaseHelper;
-import com.Stardust.cabicat.item.FileItem;
-import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,8 +11,6 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {

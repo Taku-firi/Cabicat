@@ -4,11 +4,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.Stardust.cabicat.R;
-import com.Stardust.cabicat.database.DatabaseHelper;
+import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 
 import java.util.List;
 
