@@ -29,6 +29,15 @@ public class FileItem {
         this.addeddate = dateformat.format(System.currentTimeMillis());
     }
 
+    // used while user checking the files, automatically update checked data
+    public FileItem(String name,String path,long filesize,String addeddate,int priority){
+        this.name = name;
+        this.path = path;
+        this.filesize = filesize;
+        this.addeddate = addeddate;
+        this.checkdate = dateformat.format(System.currentTimeMillis());
+        this.priority = priority;
+    }
 
     //used for check fileitem in database
     public FileItem(String name,String path,long filesize, String addeddate, String checkdate, int priority){

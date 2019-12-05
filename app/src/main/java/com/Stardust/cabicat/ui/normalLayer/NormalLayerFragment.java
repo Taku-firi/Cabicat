@@ -43,6 +43,8 @@ public class NormalLayerFragment extends Fragment {
 
         mDatabase=((MainActivity)getActivity()).getDatabase();
 
+        // add this items when you check it at the first time
+
         // fileitems for test
 //        FileItem f1 = new FileItem("name_n_1","path_n_1",2);
 //        FileItem f2 = new FileItem("name_n_2","path_n_2",2);
