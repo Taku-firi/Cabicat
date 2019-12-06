@@ -27,7 +27,8 @@
         </activity>
 
 
-        <activity android:name=".ImportActivity"></activity>
+        <activity android:name=".ImportActivity"/>
+        <activity android:name=".RegisterActivity"/>
 
 
     </application>

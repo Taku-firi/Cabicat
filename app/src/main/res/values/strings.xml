@@ -18,7 +18,12 @@
 
     // string for home fragment
     <string name="home_latestfiles">Latest Files</string>
-
+    <string name="home_import">Import to Cabicat</string>
     // string for dialog
     <string name="dialog_label_text">Enter your password</string>
+
+    // string for register
+    <string name="register_name_hint">Username</string>
+    <string name="register_password_hint">Password</string>
+    <string name="register_button">Register</string>
 </resources>

@@ -37,14 +37,24 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 //
-        Button button = root.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button btnImport = root.findViewById(R.id.home_btn_import);
+        btnImport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavController navController = Navigation.findNavController(view);
                 navController.navigate(R.id.action_navigation_home_to_fileManager);
             }
         });
+
+        Button btnRegister = root.findViewById(R.id.home_btn_register);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_navigation_home_to_register);
+            }
+        });
+
         ImageView imageViewtop = root.findViewById(R.id.home_top_imageview);
         imageViewtop.setAlpha(0.5f);
 

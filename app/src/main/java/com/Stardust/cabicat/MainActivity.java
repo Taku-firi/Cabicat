@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences.Editor editor = getSharedPreferences("cabidata",MODE_PRIVATE).edit();
         editor.putBoolean("checked",false);
-        editor.putString("pwd","123456");
         editor.apply();
     }
 

@@ -60,37 +60,37 @@
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_guideline_2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/home_guideline_1">
 
-<!--    <ScrollView-->
-<!--        android:id="@+id/home_scrollview"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.521"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
+        <!--    <ScrollView-->
+        <!--        android:id="@+id/home_scrollview"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="0dp"-->
+        <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintHorizontal_bias="0.521"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent">-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/home_top_imageview"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="130dp"-->
-<!--                android:contentDescription="@string/app_name"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/home_scrollview"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:srcCompat="@drawable/image_home_top_background" />-->
+            <!--            <ImageView-->
+            <!--                android:id="@+id/home_top_imageview"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="130dp"-->
+            <!--                android:contentDescription="@string/app_name"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/home_scrollview"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="parent"-->
+            <!--                app:srcCompat="@drawable/image_home_top_background" />-->
 
             <TextView
                 android:id="@+id/home_text_latestfiles"
@@ -104,20 +104,23 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/home_btn_import"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_import"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/home_btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_button"
+                android:textAllCaps="false"/>
 
 
         </LinearLayout>
     </ScrollView>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_scrollview" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

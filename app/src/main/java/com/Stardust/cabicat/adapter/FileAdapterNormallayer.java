@@ -31,6 +31,10 @@ public class FileAdapterNormallayer extends BaseQuickAdapter<FileItem, BaseViewH
             @Override
             public void onClick(View view) {
                 OpenFileUtil.openFileByPath(mContext,item.getPath());
+                item.updateCheckdate();
+                mDatabase.deleteFileItem(item.getPath(),0);
+                mDatabase.createFileItem(item,0);
+                System.out.println(item.getCheckdate());
             }
         });
 

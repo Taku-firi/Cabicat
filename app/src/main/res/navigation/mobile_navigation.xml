@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_fileManager"
             app:destination="@id/fileManager" />
+        <action
+            android:id="@+id/action_navigation_home_to_register"
+            app:destination="@+id/register" />
     </fragment>
 
     <fragment
@@ -26,8 +29,14 @@
         android:name="com.Stardust.cabicat.ui.secretLayer.SecretLayerFragment"
         android:label="@string/title_secretlayer"
         tools:layout="@layout/fragment_secretlayer" />
+
     <activity
         android:id="@+id/fileManager"
         android:name="com.Stardust.cabicat.ImportActivity"
-        android:label="FileManager" />
+        android:label="Import to Cabicat" />
+
+    <activity
+        android:id="@+id/register"
+        android:name="com.Stardust.cabicat.RegisterActivity"
+        android:label="Register" />
 </navigation>
