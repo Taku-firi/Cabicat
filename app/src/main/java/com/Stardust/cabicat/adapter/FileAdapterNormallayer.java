@@ -1,10 +1,12 @@
 package com.Stardust.cabicat.adapter;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.Toast;
 
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.helper.DatabaseHelper;
+import com.Stardust.cabicat.helper.OpenFileUtil;
 import com.Stardust.cabicat.item.FileItem;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -28,7 +30,7 @@ public class FileAdapterNormallayer extends BaseQuickAdapter<FileItem, BaseViewH
         viewHolder.getView(R.id.fileitem_view_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"You clicked " + item.getName(),Toast.LENGTH_SHORT).show();
+                OpenFileUtil.openFileByPath(mContext,item.getPath());
             }
         });
 
