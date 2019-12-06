@@ -112,7 +112,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         List<FileItem> fileitemList = new ArrayList<>();
         switch (i){
             case 0:
-                String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER;
+                String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + NAME + "," + PATH;
                 Cursor c0 = db.rawQuery(selectQuery0, null);
                 if (c0.moveToFirst()) {
                     do {
@@ -130,7 +130,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 c0.close();
                 break;
             case 1:
-                String selectQuery1 = "SELECT * FROM " + TABLE_SECRETLAYER;
+                String selectQuery1 = "SELECT * FROM " + TABLE_SECRETLAYER + " ORDER BY " + NAME + "," + PATH;
                 Cursor c1 = db.rawQuery(selectQuery1, null);
                 if (c1.moveToFirst()) {
                     do {

@@ -103,11 +103,11 @@ public class ImportActivity extends MainActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
-            filePath =uri.toString();
-            File file = new File(String.valueOf(uri));
+//            filePath =uri.toString();
+//            File file = new File(String.valueOf(uri));
 
-            String filesize = String.valueOf(file.length());
-            String fileStartDate = String.valueOf(file.length());
+//            String filesize = String.valueOf(file.length());
+//            String fileStartDate = String.valueOf(file.length());
 
             this.filePath = getPath(this, uri);
             fileName = this.filePath.substring(this.filePath.lastIndexOf("/") + 1, this.filePath.length());
