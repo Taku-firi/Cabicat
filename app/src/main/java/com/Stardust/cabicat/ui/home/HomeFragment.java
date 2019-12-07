@@ -37,6 +37,10 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 //
+        ImageView imageViewtop = root.findViewById(R.id.home_top_imageview);
+        imageViewtop.setAlpha(0.5f);
+
+        // button for import activity
         Button btnImport = root.findViewById(R.id.home_btn_import);
         btnImport.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +50,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //button for register activity
         Button btnRegister = root.findViewById(R.id.home_btn_register);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +60,17 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ImageView imageViewtop = root.findViewById(R.id.home_top_imageview);
-        imageViewtop.setAlpha(0.5f);
+        //button for changepwd activity
+        Button btnChangepwd = root.findViewById(R.id.home_btn_changepwd);
+        btnChangepwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_navigation_home_to_changepwd);
+            }
+        });
+
+
 
         final TextView textViewlatest = root.findViewById(R.id.home_text_latestfiles);
         homeViewModel.getTextLatest().observe(this, new Observer<String>() {

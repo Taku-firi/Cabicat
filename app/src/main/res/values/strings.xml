@@ -19,6 +19,7 @@
     // string for home fragment
     <string name="home_latestfiles">Latest Files</string>
     <string name="home_import">Import to Cabicat</string>
+    <string name="home_changepwd">Change your password</string>
     // string for dialog
     <string name="dialog_label_text">Enter your password</string>
 
@@ -26,4 +27,10 @@
     <string name="register_name_hint">Username</string>
     <string name="register_password_hint">Password</string>
     <string name="register_button">Register</string>
+
+    // string for change pwd
+    <string name="changepwd_name_hint">Username</string>
+    <string name="changepwd_cpassword_hint">Current Password</string>
+    <string name="changepwd_npassword_hint">New Password</string>
+    <string name="changepwd_apply_btn">Apply</string>
 </resources>

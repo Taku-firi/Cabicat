@@ -30,13 +30,14 @@ public class RegisterActivity extends AppCompatActivity {
 
             SharedPreferences pref = getSharedPreferences("cabidata",MODE_PRIVATE);
             boolean registered = pref.getBoolean("registered",false);
+
             @Override
             public void onClick(View view) {
                 String username_input = username.getText().toString();
                 String password_input = password.getText().toString();
                 if(!TextUtils.isEmpty(username_input)){
                     if (password_input.length()==6){
-                        if(registered != true) {
+                        if(!registered ) {
                             SharedPreferences.Editor editor = getSharedPreferences("cabidata", MODE_PRIVATE).edit();
                             editor.putString("username", username_input);
                             editor.putString("pwd", password_input);

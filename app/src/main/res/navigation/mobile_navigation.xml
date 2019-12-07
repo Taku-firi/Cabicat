@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_register"
             app:destination="@+id/register" />
+        <action
+            android:id="@+id/action_navigation_home_to_changepwd"
+            app:destination="@+id/changepwd" />
     </fragment>
 
     <fragment
@@ -39,4 +42,10 @@
         android:id="@+id/register"
         android:name="com.Stardust.cabicat.RegisterActivity"
         android:label="Register" />
+
+    <activity
+        android:id="@+id/changepwd"
+        android:name="com.Stardust.cabicat.ChangepwdActivity"
+        android:label="Change password" />
+
 </navigation>
