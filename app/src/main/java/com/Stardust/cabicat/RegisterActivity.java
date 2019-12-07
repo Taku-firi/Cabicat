@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class RegisterActivity extends AppCompatActivity {
 
     Button btnRegister;
@@ -40,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(!registered ) {
                             SharedPreferences.Editor editor = getSharedPreferences("cabidata", MODE_PRIVATE).edit();
                             editor.putString("username", username_input);
-                            editor.putString("pwd", password_input);
+                            editor.putString("pwd", md5(password_input));
                             editor.putBoolean("registered", true);
                             editor.apply();
                             Toast.makeText(getApplication(), "Registered successfully.", Toast.LENGTH_SHORT).show();
@@ -60,4 +63,28 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+
+    public static String md5(String string) {
+        if (TextUtils.isEmpty(string)) {
+            return "";
+        }
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+            byte[] bytes = md5.digest(string.getBytes());
+            String result = "";
+            for (byte b : bytes) {
+                String temp = Integer.toHexString(b & 0xff);
+                if (temp.length() == 1) {
+                    temp = "0" + temp;
+                }
+                result += temp;
+            }
+            return result;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }

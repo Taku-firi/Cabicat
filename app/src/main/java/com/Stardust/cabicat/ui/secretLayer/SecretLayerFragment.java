@@ -3,6 +3,7 @@ package com.Stardust.cabicat.ui.secretLayer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 import com.Stardust.cabicat.item.PwdCheckDialog;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class SecretLayerFragment extends Fragment {
@@ -74,7 +77,7 @@ public class SecretLayerFragment extends Fragment {
                     SharedPreferences pref = getActivity().getSharedPreferences("cabidata", Context.MODE_PRIVATE);
                     String pwd = pref.getString("pwd","");
 
-                    if (pwd.equals(password)) {
+                    if (pwd.equals(md5(password))) {
                         pwdCheckDialog.dismiss();
 
                         // fileitems for test
@@ -105,5 +108,26 @@ public class SecretLayerFragment extends Fragment {
         return root;
     }
 
-
+    public static String md5(String string) {
+        if (TextUtils.isEmpty(string)) {
+            return "";
+        }
+        MessageDigest md5 = null;
+        try {
+            md5 = MessageDigest.getInstance("MD5");
+            byte[] bytes = md5.digest(string.getBytes());
+            String result = "";
+            for (byte b : bytes) {
+                String temp = Integer.toHexString(b & 0xff);
+                if (temp.length() == 1) {
+                    temp = "0" + temp;
+                }
+                result += temp;
+            }
+            return result;
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
 }
