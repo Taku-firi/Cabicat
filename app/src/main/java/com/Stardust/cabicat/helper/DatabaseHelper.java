@@ -12,7 +12,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     // Database name
-    private static final String DATABASE_NAME = "cabicat.db";
+    private static final String DATABASE_NAME = "cabicat_db";
 
     // Database version
     private static final int DATABASE_VERSION = 1;
