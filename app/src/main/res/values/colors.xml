@@ -18,6 +18,8 @@
 
     // color used for home fragment
     <color name="home_text">#68228B</color>
+    <color name="home_carditem_bg">#87CEFA</color>
+    <color name="home_carditem_text">#222222</color>
 
     // color used for dialog
     <color name="dialog_gray_hint">#ababab</color>

@@ -17,10 +17,21 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.Stardust.cabicat.MainActivity;
 import com.Stardust.cabicat.R;
+import com.Stardust.cabicat.adapter.CardviewAdapter;
+import com.Stardust.cabicat.adapter.FileAdapterNormallayer;
+import com.Stardust.cabicat.helper.DatabaseHelper;
+import com.Stardust.cabicat.item.FileItem;
+
+import java.util.List;
 
 public class HomeFragment extends Fragment {
+    private DatabaseHelper mDatabase;
 
     private HomeViewModel homeViewModel;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -80,6 +91,16 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        mDatabase=((MainActivity)getActivity()).getDatabase();
+
+        List<FileItem> ls = mDatabase.getAllItems(0);
+
+        RecyclerView recyclerView = root.findViewById(R.id.home_view_latestfiles);
+        CardviewAdapter cardviewAdapter = new CardviewAdapter(R.layout.cardview_adapterunit,ls,mDatabase);
+        recyclerView.setAdapter(cardviewAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(root.getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
         return root;
     }
 }
