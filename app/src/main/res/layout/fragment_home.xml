@@ -104,24 +104,27 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/home_btn_import"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button"
                 android:text="@string/home_import"
                 android:textAllCaps="false" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/home_btn_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:text="@string/register_button"
                 android:textAllCaps="false"/>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/home_btn_changepwd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:text="@string/home_changepwd"
                 android:textAllCaps="false" />
         </LinearLayout>

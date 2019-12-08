@@ -50,11 +50,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         android:text="@string/changepwd_apply_btn"
+        android:textSize="24sp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toEndOf="parent"
