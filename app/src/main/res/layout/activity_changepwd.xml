@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ChangepwdActivity">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/timg"
+        android:alpha="0.4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
@@ -54,7 +65,7 @@
         android:id="@+id/btn_apply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.MaterialComponents.Button"
         android:text="@string/changepwd_apply_btn"
         android:textSize="24sp"
         android:textAllCaps="false"
@@ -97,4 +108,5 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/timg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/username"
         android:layout_width="wrap_content"
@@ -66,7 +76,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_register"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register_button"
@@ -76,4 +86,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

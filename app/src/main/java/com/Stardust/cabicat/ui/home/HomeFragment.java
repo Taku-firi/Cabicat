@@ -1,5 +1,6 @@
 package com.Stardust.cabicat.ui.home;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -30,6 +31,8 @@ import com.Stardust.cabicat.item.FileItem;
 
 import java.util.List;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class HomeFragment extends Fragment {
     private DatabaseHelper mDatabase;
 
@@ -40,7 +43,12 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-//        final TextView textView = root.findViewById(R.id.text_home);
+
+        SharedPreferences pref = getActivity().getSharedPreferences("cabidata",MODE_PRIVATE);
+        String username = pref.getString("username","");
+        String welcome = "Welcome ——— " + username + " !!!!";
+        TextView tvName = root.findViewById(R.id.text_home);
+        tvName.setText(welcome);
 //        homeViewModel.getText().observe(this, new Observer<String>() {
 //            @Override
 //            public void onChanged(@Nullable String s) {

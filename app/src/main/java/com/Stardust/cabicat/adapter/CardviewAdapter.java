@@ -3,6 +3,8 @@ package com.Stardust.cabicat.adapter;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.helper.OpenFileUtil;
@@ -26,6 +28,8 @@ public class CardviewAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> 
 
         viewHolder.setBackgroundColor(R.id.carditem_view_content, mContext.getResources().getColor(R.color.home_carditem_bg));
         viewHolder.setTextColor(R.id.carditem_name,mContext.getResources().getColor(R.color.home_carditem_text));
+
+
         // click the fileitem
         viewHolder.getView(R.id.carditem_view_content).setOnClickListener(new View.OnClickListener() {
             @Override
