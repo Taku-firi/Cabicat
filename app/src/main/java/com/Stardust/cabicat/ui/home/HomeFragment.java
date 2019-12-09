@@ -103,4 +103,19 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         return root;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mDatabase=((MainActivity)getActivity()).getDatabase();
+
+        List<FileItem> ls = mDatabase.getAllItems(0);
+
+        RecyclerView recyclerView = getView().findViewById(R.id.home_view_latestfiles);
+        CardviewAdapter cardviewAdapter = new CardviewAdapter(R.layout.cardview_adapterunit,ls,mDatabase);
+        recyclerView.setAdapter(cardviewAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+    }
 }
