@@ -43,19 +43,6 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-        SharedPreferences pref = getActivity().getSharedPreferences("cabidata",MODE_PRIVATE);
-        String username = pref.getString("username","");
-        String welcome = "Welcome ——— " + username + " !!!!";
-        TextView tvName = root.findViewById(R.id.text_home);
-        tvName.setText(welcome);
-//        homeViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(Html.fromHtml("<font color = '#68228B'>" + s + "</font>"));
-//            }
-//        });
-//
         ImageView imageViewtop = root.findViewById(R.id.home_top_imageview);
         imageViewtop.setAlpha(0.5f);
 
@@ -99,16 +86,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-//        mDatabase=((MainActivity)getActivity()).getDatabase();
-//        List<FileItem> ls_l = mDatabase.getNewestFile();
-//
-//        RecyclerView recyclerView_l = root.findViewById(R.id.home_view_latestfiles);
-//        CardviewAdapter cardviewAdapter_l = new CardviewAdapter(R.layout.cardview_adapterunit,ls_l,mDatabase);
-//        recyclerView_l.setAdapter(cardviewAdapter_l);
-//        LinearLayoutManager layoutManager_l = new LinearLayoutManager(root.getContext());
-//        layoutManager_l.setOrientation(LinearLayoutManager.HORIZONTAL);
-//        recyclerView_l.setLayoutManager(layoutManager_l);
-
 
         // recently viewed files
         final TextView textViewrecent = root.findViewById(R.id.home_text_recentfiles);
@@ -129,16 +106,26 @@ public class HomeFragment extends Fragment {
         super.onResume();
         mDatabase=((MainActivity)getActivity()).getDatabase();
 
-        List<FileItem> ls_l = mDatabase.getNewestFile();
+        // display greeting
+        SharedPreferences pref = getActivity().getSharedPreferences("cabidata",MODE_PRIVATE);
+        String username = pref.getString("username","");
+        String welcome = "Welcome ——— " + username + " !!!!";
+        TextView tvName = getActivity().findViewById(R.id.text_home);
+        tvName.setText(welcome);
 
+
+        // latest added files
+        List<FileItem> ls_l = mDatabase.getNewestFile();
         RecyclerView recyclerView_l = getView().findViewById(R.id.home_view_latestfiles);
         CardviewAdapter cardviewAdapter_l = new CardviewAdapter(R.layout.cardview_adapterunit,ls_l,mDatabase);
         recyclerView_l.setAdapter(cardviewAdapter_l);
         LinearLayoutManager layoutManager_l = new LinearLayoutManager(getContext());
         layoutManager_l.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView_l.setLayoutManager(layoutManager_l);
+        recyclerView_l.setNestedScrollingEnabled(false);
 
 
+        // recently viewed files
         List<FileItem> ls_r = mDatabase.getRecentCheckedFile();
         RecyclerView recyclerView_r =  getView().findViewById(R.id.home_view_recentfiles);
         CardviewAdapter cardviewAdapter_r = new CardviewAdapter(R.layout.cardview_adapterunit,ls_r,mDatabase);
@@ -146,5 +133,6 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager layoutManager_r = new LinearLayoutManager(getContext());
         layoutManager_r.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView_r.setLayoutManager(layoutManager_r);
+        recyclerView_r.setNestedScrollingEnabled(false);
     }
 }
