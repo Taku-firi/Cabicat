@@ -37,6 +37,8 @@ public class HomeFragment extends Fragment {
     private DatabaseHelper mDatabase;
 
     private HomeViewModel homeViewModel;
+
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -110,7 +112,7 @@ public class HomeFragment extends Fragment {
         SharedPreferences pref = getActivity().getSharedPreferences("cabidata",MODE_PRIVATE);
         String username = pref.getString("username","");
         String welcome = "Welcome ——— " + username + " !!!!";
-        TextView tvName = getActivity().findViewById(R.id.text_home);
+        TextView tvName = getView().findViewById(R.id.text_home);
         tvName.setText(welcome);
 
 
