@@ -98,7 +98,7 @@ public class FileAdapterNormallayer extends BaseQuickAdapter<FileItem, BaseViewH
                 //  Database operation here :
                 mDatabase.deleteFileItem(item.getPath(),0);
                 //  Delete file here :
-
+                OpenFileUtil.deleteFileByPath(mContext,item.getPath());
                 hasDeleted = true;
 
                 if (hasDeleted){

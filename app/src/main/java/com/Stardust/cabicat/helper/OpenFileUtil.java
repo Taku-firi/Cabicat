@@ -128,4 +128,20 @@ public class OpenFileUtil {
             e.printStackTrace();
         }
     }
+
+
+    public static void deleteFileByPath(Context context, String path){
+        if(context==null||path==null)
+            return;
+
+        try {
+            File file = new File(path);
+            file.delete();
+            Toast.makeText(context, "delete successfully 123", Toast.LENGTH_SHORT).show();
+            return;
+        }catch (Exception e){
+            Toast.makeText(context, "you can not delete this file", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+    }
 }
