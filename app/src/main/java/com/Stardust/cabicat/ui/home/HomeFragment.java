@@ -90,25 +90,37 @@ public class HomeFragment extends Fragment {
         });
 
 
-
+        // latest added files
         final TextView textViewlatest = root.findViewById(R.id.home_text_latestfiles);
         homeViewModel.getTextLatest().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                textViewlatest.setText("Latest Files");
+                textViewlatest.setText("Latest Added ");
             }
         });
 
-        mDatabase=((MainActivity)getActivity()).getDatabase();
+//        mDatabase=((MainActivity)getActivity()).getDatabase();
+//        List<FileItem> ls_l = mDatabase.getNewestFile();
+//
+//        RecyclerView recyclerView_l = root.findViewById(R.id.home_view_latestfiles);
+//        CardviewAdapter cardviewAdapter_l = new CardviewAdapter(R.layout.cardview_adapterunit,ls_l,mDatabase);
+//        recyclerView_l.setAdapter(cardviewAdapter_l);
+//        LinearLayoutManager layoutManager_l = new LinearLayoutManager(root.getContext());
+//        layoutManager_l.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        recyclerView_l.setLayoutManager(layoutManager_l);
 
-        List<FileItem> ls = mDatabase.getNewestFile();
 
-        RecyclerView recyclerView = root.findViewById(R.id.home_view_latestfiles);
-        CardviewAdapter cardviewAdapter = new CardviewAdapter(R.layout.cardview_adapterunit,ls,mDatabase);
-        recyclerView.setAdapter(cardviewAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(root.getContext());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
+        // recently viewed files
+        final TextView textViewrecent = root.findViewById(R.id.home_text_recentfiles);
+        homeViewModel.getTextRecent().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                textViewrecent.setText("Recently viewed");
+            }
+        });
+
+
+
         return root;
     }
 
@@ -117,13 +129,22 @@ public class HomeFragment extends Fragment {
         super.onResume();
         mDatabase=((MainActivity)getActivity()).getDatabase();
 
-        List<FileItem> ls = mDatabase.getNewestFile();
+        List<FileItem> ls_l = mDatabase.getNewestFile();
 
-        RecyclerView recyclerView = getView().findViewById(R.id.home_view_latestfiles);
-        CardviewAdapter cardviewAdapter = new CardviewAdapter(R.layout.cardview_adapterunit,ls,mDatabase);
-        recyclerView.setAdapter(cardviewAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(layoutManager);
+        RecyclerView recyclerView_l = getView().findViewById(R.id.home_view_latestfiles);
+        CardviewAdapter cardviewAdapter_l = new CardviewAdapter(R.layout.cardview_adapterunit,ls_l,mDatabase);
+        recyclerView_l.setAdapter(cardviewAdapter_l);
+        LinearLayoutManager layoutManager_l = new LinearLayoutManager(getContext());
+        layoutManager_l.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView_l.setLayoutManager(layoutManager_l);
+
+
+        List<FileItem> ls_r = mDatabase.getRecentCheckedFile();
+        RecyclerView recyclerView_r =  getView().findViewById(R.id.home_view_recentfiles);
+        CardviewAdapter cardviewAdapter_r = new CardviewAdapter(R.layout.cardview_adapterunit,ls_r,mDatabase);
+        recyclerView_r.setAdapter(cardviewAdapter_r);
+        LinearLayoutManager layoutManager_r = new LinearLayoutManager(getContext());
+        layoutManager_r.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView_r.setLayoutManager(layoutManager_r);
     }
 }

@@ -11,25 +11,24 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
     private MutableLiveData<String> mTextLatest;
+    private MutableLiveData<String> mTextRecent;
 
     public HomeViewModel() {
-
-//        mText = new MutableLiveData<>();
-//        mText.setValue("This is the home page");
-
 
         mTextLatest = new MutableLiveData<>();
         mTextLatest.setValue("Latest Files ");
 
+        mTextRecent = new MutableLiveData<>();
+        mTextRecent.setValue("Recently viewed ");
+
     }
 
-//    public LiveData<String> getText() {
-//        return mText;
-//    }
+
     public LiveData<String> getTextLatest() {
         return mTextLatest;
     }
+
+    public LiveData<String> getTextRecent() { return mTextRecent; }
 
 }
