@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+
 import com.Stardust.cabicat.item.FileItem;
+
 import java.util.ArrayList;
 import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     // Database name
@@ -95,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(CHECKDATE, fileItem.getCheckdate());
         values.put(PRIORITY, fileItem.getPriority());
         Log.d(TAG, "createFileItem: " + fileItem.getPath());
-        switch (i){
+        switch (i) {
             case 0:
                 return db.insert(TABLE_NORMALLAYER, null, values);
             case 1:
@@ -110,7 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<FileItem> getAllItems(int i) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<FileItem> fileitemList = new ArrayList<>();
-        switch (i){
+        switch (i) {
             case 0:
                 String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + NAME + "," + PATH;
                 Cursor c0 = db.rawQuery(selectQuery0, null);
@@ -157,7 +160,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // get a particular item by path
     public FileItem getFileItemByPath(String path, int i) {
         SQLiteDatabase db = this.getReadableDatabase();
-        switch (i){
+        switch (i) {
             case 0:
                 String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER
                         + " WHERE " + PATH + " = '" + path + "'";
@@ -204,7 +207,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void deleteFileItem(String path, int i) {
         SQLiteDatabase db = this.getWritableDatabase();
 
-        switch (i){
+        switch (i) {
             case 0:
                 db.delete(TABLE_NORMALLAYER,
                         PATH + " = ?",
@@ -219,7 +222,52 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 break;
         }
 
-        Log.d(TAG, "delete: "+ path);
+        Log.d(TAG, "delete: " + path);
     }
+
+    // get related 10 files ordered by added date
+    public List<FileItem> getRelatedAddedFile() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<FileItem> fileitemList = new ArrayList<>();
+        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + ADDEDDATE + " LIMIT 10 ";
+        Cursor c0 = db.rawQuery(selectQuery0, null);
+        if (c0.moveToFirst()) {
+            do {
+                FileItem fileItem = new FileItem(
+                        c0.getString(c0.getColumnIndex(NAME)),
+                        c0.getString(c0.getColumnIndex(PATH)),
+                        c0.getLong(c0.getColumnIndex(SIZE)),
+                        c0.getString(c0.getColumnIndex(ADDEDDATE)),
+                        c0.getString(c0.getColumnIndex(CHECKDATE)),
+                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                );
+            } while (c0.moveToNext());
+        }
+        c0.close();
+        return fileitemList;
+    }
+
+    // get related 10 files ordered by check date
+    public List<FileItem> getRelatedCheckFile() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        List<FileItem> fileitemList = new ArrayList<>();
+        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + CHECKDATE+ " LIMIT 10 ";
+        Cursor c0 = db.rawQuery(selectQuery0, null);
+        if (c0.moveToFirst()) {
+            do {
+                FileItem fileItem = new FileItem(
+                        c0.getString(c0.getColumnIndex(NAME)),
+                        c0.getString(c0.getColumnIndex(PATH)),
+                        c0.getLong(c0.getColumnIndex(SIZE)),
+                        c0.getString(c0.getColumnIndex(ADDEDDATE)),
+                        c0.getString(c0.getColumnIndex(CHECKDATE)),
+                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                );
+            } while (c0.moveToNext());
+        }
+        c0.close();
+        return fileitemList;
+    }
+
 }
 
