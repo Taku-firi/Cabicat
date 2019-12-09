@@ -93,7 +93,7 @@ public class HomeFragment extends Fragment {
 
         mDatabase=((MainActivity)getActivity()).getDatabase();
 
-        List<FileItem> ls = mDatabase.getAllItems(0);
+        List<FileItem> ls = mDatabase.getNewestFile();
 
         RecyclerView recyclerView = root.findViewById(R.id.home_view_latestfiles);
         CardviewAdapter cardviewAdapter = new CardviewAdapter(R.layout.cardview_adapterunit,ls,mDatabase);

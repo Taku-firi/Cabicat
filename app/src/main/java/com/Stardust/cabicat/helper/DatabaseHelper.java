@@ -194,6 +194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c1.getString(c1.getColumnIndex(CHECKDATE)),
                         c1.getInt(c1.getColumnIndex(PRIORITY))
                 );
+
                 c1.close();
                 return fileItem1;
             default:
@@ -226,7 +227,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // get related 10 files ordered by added date
-    public List<FileItem> getRelatedAddedFile() {
+    public List<FileItem> getNewestFile() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<FileItem> fileitemList = new ArrayList<>();
         String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + ADDEDDATE + " LIMIT 10 ";
@@ -241,6 +242,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
                         c0.getInt(c0.getColumnIndex(PRIORITY))
                 );
+                fileitemList.add(fileItem);
             } while (c0.moveToNext());
         }
         c0.close();
@@ -248,7 +250,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // get related 10 files ordered by check date
-    public List<FileItem> getRelatedCheckFile() {
+    public List<FileItem> getRecentCheckedFile() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<FileItem> fileitemList = new ArrayList<>();
         String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + CHECKDATE+ " LIMIT 10 ";
@@ -263,6 +265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
                         c0.getInt(c0.getColumnIndex(PRIORITY))
                 );
+                fileitemList.add(fileItem);
             } while (c0.moveToNext());
         }
         c0.close();
