@@ -230,7 +230,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<FileItem> getNewestFile() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<FileItem> fileitemList = new ArrayList<>();
-        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + ADDEDDATE + " LIMIT 10 ";
+        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + ADDEDDATE + " DESC"+" LIMIT 10 ";
         Cursor c0 = db.rawQuery(selectQuery0, null);
         if (c0.moveToFirst()) {
             do {
@@ -253,7 +253,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<FileItem> getRecentCheckedFile() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<FileItem> fileitemList = new ArrayList<>();
-        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + CHECKDATE+ " LIMIT 10 ";
+        String selectQuery0 = "SELECT * FROM " + TABLE_NORMALLAYER + " ORDER BY " + CHECKDATE+ " DESC"+" LIMIT 10 ";
         Cursor c0 = db.rawQuery(selectQuery0, null);
         if (c0.moveToFirst()) {
             do {
