@@ -118,6 +118,9 @@ public class HomeFragment extends Fragment {
 
         // latest added files
         List<FileItem> ls_l = mDatabase.getNewestFile();
+        if (ls_l.isEmpty()) {
+            ls_l.add(new FileItem(" No file available now "," Please import your files ~"));
+        }
         RecyclerView recyclerView_l = getView().findViewById(R.id.home_view_latestfiles);
         CardviewAdapter cardviewAdapter_l = new CardviewAdapter(R.layout.cardview_adapterunit,ls_l,mDatabase);
         recyclerView_l.setAdapter(cardviewAdapter_l);
@@ -129,6 +132,9 @@ public class HomeFragment extends Fragment {
 
         // recently viewed files
         List<FileItem> ls_r = mDatabase.getRecentCheckedFile();
+        if (ls_r.isEmpty()) {
+            ls_r.add(new FileItem(" No file available now "," Please import your files ~"));
+        }
         RecyclerView recyclerView_r =  getView().findViewById(R.id.home_view_recentfiles);
         CardviewAdapter cardviewAdapter_r = new CardviewAdapter(R.layout.cardview_adapterunit,ls_r,mDatabase);
         recyclerView_r.setAdapter(cardviewAdapter_r);
