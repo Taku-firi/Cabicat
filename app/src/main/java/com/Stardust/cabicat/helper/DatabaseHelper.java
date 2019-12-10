@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TAG = "DatabaseHelper";
     // Database name
-    private static final String DATABASE_NAME = "cabicat_db";
+    private static final String DATABASE_NAME = "cabicat.db";
 
     // Database version
     private static final int DATABASE_VERSION = 1;
@@ -31,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String ADDEDDATE = "addeddate";
     private static final String CHECKDATE = "checkdate";
     private static final String PRIORITY = "priority";
+    private static final String TIMES = "times";
 
     // TABLE_NORMALLAYER table create statements
     private static final String CREATE_TABLE_NORMALLAYER =
@@ -41,7 +42,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + SIZE + " LONG,"
                     + ADDEDDATE + " DATETIME,"
                     + CHECKDATE + " DATETIME,"
-                    + PRIORITY + " INTEGER"
+                    + PRIORITY + " INTEGER,"
+                    + TIMES + " INTEGER"
                     + ")";
 
     // TABLE_SECRETLAYER table create statements
@@ -53,7 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     + SIZE + " LONG,"
                     + ADDEDDATE + " DATETIME,"
                     + CHECKDATE + " DATETIME,"
-                    + PRIORITY + " INTEGER"
+                    + PRIORITY + " INTEGER,"
+                    + TIMES + " INTEGER"
                     + ")";
 
     // Singleton instance
@@ -97,6 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(ADDEDDATE, fileItem.getAddeddate());
         values.put(CHECKDATE, fileItem.getCheckdate());
         values.put(PRIORITY, fileItem.getPriority());
+        values.put(TIMES, fileItem.getTimes());
         Log.d(TAG, "createFileItem: " + fileItem.getPath());
         switch (i) {
             case 0:
@@ -125,7 +129,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 c0.getLong(c0.getColumnIndex(SIZE)),
                                 c0.getString(c0.getColumnIndex(ADDEDDATE)),
                                 c0.getString(c0.getColumnIndex(CHECKDATE)),
-                                c0.getInt(c0.getColumnIndex(PRIORITY))
+                                c0.getInt(c0.getColumnIndex(PRIORITY)),
+                                c0.getInt(c0.getColumnIndex(TIMES))
                         );
                         fileitemList.add(fileItem);
                     } while (c0.moveToNext());
@@ -143,7 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                                 c1.getLong(c1.getColumnIndex(SIZE)),
                                 c1.getString(c1.getColumnIndex(ADDEDDATE)),
                                 c1.getString(c1.getColumnIndex(CHECKDATE)),
-                                c1.getInt(c1.getColumnIndex(PRIORITY))
+                                c1.getInt(c1.getColumnIndex(PRIORITY)),
+                                c1.getInt(c1.getColumnIndex(TIMES))
                         );
                         fileitemList.add(fileItem);
                     } while (c1.moveToNext());
@@ -174,7 +180,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c0.getLong(c0.getColumnIndex(SIZE)),
                         c0.getString(c0.getColumnIndex(ADDEDDATE)),
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
-                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                        c0.getInt(c0.getColumnIndex(PRIORITY)),
+                        c0.getInt(c0.getColumnIndex(TIMES))
                 );
                 c0.close();
                 return fileItem0;
@@ -192,7 +199,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c1.getLong(c1.getColumnIndex(SIZE)),
                         c1.getString(c1.getColumnIndex(ADDEDDATE)),
                         c1.getString(c1.getColumnIndex(CHECKDATE)),
-                        c1.getInt(c1.getColumnIndex(PRIORITY))
+                        c1.getInt(c1.getColumnIndex(PRIORITY)),
+                        c1.getInt(c1.getColumnIndex(TIMES))
                 );
 
                 c1.close();
@@ -240,7 +248,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c0.getLong(c0.getColumnIndex(SIZE)),
                         c0.getString(c0.getColumnIndex(ADDEDDATE)),
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
-                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                        c0.getInt(c0.getColumnIndex(PRIORITY)),
+                        c0.getInt(c0.getColumnIndex(TIMES))
                 );
                 fileitemList.add(fileItem);
             } while (c0.moveToNext());
@@ -263,7 +272,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         c0.getLong(c0.getColumnIndex(SIZE)),
                         c0.getString(c0.getColumnIndex(ADDEDDATE)),
                         c0.getString(c0.getColumnIndex(CHECKDATE)),
-                        c0.getInt(c0.getColumnIndex(PRIORITY))
+                        c0.getInt(c0.getColumnIndex(PRIORITY)),
+                        c0.getInt(c0.getColumnIndex(TIMES))
                 );
                 fileitemList.add(fileItem);
             } while (c0.moveToNext());

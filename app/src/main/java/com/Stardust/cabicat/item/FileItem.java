@@ -9,6 +9,7 @@ public class FileItem {
     private long filesize;
     private String addeddate;
     private String checkdate;
+    private int times;
     private int priority;
     SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -27,6 +28,7 @@ public class FileItem {
         this.path = path;
         this.filesize = filesize;
         this.addeddate = dateformat.format(System.currentTimeMillis());
+        this.times = 0;
     }
 
     // used while user checking the files, automatically update checked data
@@ -40,13 +42,14 @@ public class FileItem {
     }
 
     //used for check fileitem in database
-    public FileItem(String name,String path,long filesize, String addeddate, String checkdate, int priority){
+    public FileItem(String name,String path,long filesize, String addeddate, String checkdate, int priority,int times){
         this.name = name;
         this.path = path;
         this.filesize = filesize;
         this.addeddate = addeddate;
         this.checkdate = checkdate;
         this.priority = priority;
+        this.times = times;
     }
 
 
@@ -74,6 +77,10 @@ public class FileItem {
         return priority;
     }
 
+    public int getTimes(){
+        return times;
+    }
+
     public void updateCheckdate(){
         this.checkdate = dateformat.format(System.currentTimeMillis());
     }
@@ -81,4 +88,9 @@ public class FileItem {
     public void setPriority(int i){
         this.priority = i;
     }
+
+    public void updateTime(int i){
+        this.times = i;
+    }
+
 }
