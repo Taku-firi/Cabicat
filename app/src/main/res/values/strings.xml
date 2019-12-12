@@ -39,12 +39,12 @@
     <string name="about_name">Cabicat</string>
     <string name="about_introduce">a light-weight file manage system</string>
     <string name="about_team_name">Team StarDust</string>
-    <string name="about_studentname">yiheng dai\nsida huang\njiamin chen\nzheng wu</string>
+    <string name="about_studentname">Yiheng Dai\nSida Huang\nJiamin Chen\nZheng Wu</string>
     <string name="about_studentid">1611453\n1612359\n1613449\n1613261</string>
     <string name="about_githubname">GitHub</string>
     <string name="about_githublink">https://github.com/Taku-firi/Cabicat</string>
     <string name="about_Copyright_Declaration">Copyright Declaration</string>
-    <string name="about_copyright1">Copyright [2019] [CSE208 Group J]</string>
+    <string name="about_copyright1">Copyright [2019] [CSE311 Team Stardust]</string>
     <string name="about_copyright2">Licensed under the Apache License, Version 2.0 (the "License");</string>
     <string name="about_copyright3">you may not use this file except in compliance with the License.</string>
     <string name="about_copyright4">You may obtain a copy of the License at</string>

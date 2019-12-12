@@ -78,6 +78,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //button for about activity
+        Button btnAbout = root.findViewById(R.id.home_btn_about);
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(view);
+                navController.navigate(R.id.action_navigation_home_to_about);
+            }
+        });
 
         // latest added files
         final TextView textViewlatest = root.findViewById(R.id.home_text_latestfiles);

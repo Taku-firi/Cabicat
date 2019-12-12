@@ -31,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_name"
-                android:textSize="36sp" />
+                android:textSize="34sp"
+                android:fontFamily="sans-serif-black"/>
 
             <TextView
                 android:id="@+id/about_introduce"
@@ -53,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_team_name"
-                android:textSize="36sp" />
+                android:textSize="34sp"
+                android:fontFamily="sans-serif-black"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,14 +82,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_githubname"
-                    android:textSize="36sp" />
+                    android:textSize="34sp"
+                    android:fontFamily="sans-serif-black"/>
 
                 <TextView
                     android:id="@+id/about_githublink"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_githublink"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:autoLink="web"/>
 
             <TextView
                 android:id="@+id/blank3"
@@ -102,7 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_Copyright_Declaration"
-                android:textSize="36sp" />
+                android:textSize="34sp"
+                android:fontFamily="sans-serif-black"/>
 
                 <TextView
                     android:id="@+id/about_copyright1"
@@ -137,7 +142,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_copyright5"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:autoLink="web"/>
 
                 <TextView
                     android:id="@+id/about_copyright6"
