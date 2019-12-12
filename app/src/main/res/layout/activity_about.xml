@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/blank1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/about_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_name"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/about_introduce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_introduce"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/blank2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp" />
+
+
+            <TextView
+                android:id="@+id/about_team_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_team_name"
+                android:textSize="36sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="188dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/about_studentname"
+                    android:layout_width="202dp"
+                    android:layout_height="189dp"
+                    android:text="@string/about_studentname"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/about_studentid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/about_studentid"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/about_githubname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_githubname"
+                    android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/about_githublink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_githublink"
+                    android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/blank3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp" />
+
+
+            <TextView
+                android:id="@+id/about_Copyright_Declaration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_Copyright_Declaration"
+                android:textSize="36sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright1"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright2"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright3"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright4"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright5"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/about_copyright6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright6"
+                    android:textSize="20sp" />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

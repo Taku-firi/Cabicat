@@ -16,9 +16,9 @@
     <string name="welcomepage_text">Welcome to Cabicat</string>
 
 
-<!--    // string for home fragment-->
-<!--    <string name="home_latestfiles">Latest Files</string>-->
-<!--    <string name="home_recentfiles">Recently Viewed</string>-->
+    <!--    // string for home fragment-->
+    <!--    <string name="home_latestfiles">Latest Files</string>-->
+    <!--    <string name="home_recentfiles">Recently Viewed</string>-->
     <string name="home_import">Import to Cabicat</string>
     <string name="home_changepwd">Change password</string>
     // string for dialog
@@ -34,4 +34,23 @@
     <string name="changepwd_cpassword_hint">Current Password</string>
     <string name="changepwd_npassword_hint">New Password</string>
     <string name="changepwd_apply_btn">Apply</string>
+
+    // string for about
+    <string name="about_name">Cabicat</string>
+    <string name="about_introduce">a light-weight file manage system</string>
+    <string name="about_team_name">Team StarDust</string>
+    <string name="about_studentname">yiheng dai\nsida huang\njiamin chen\nzheng wu</string>
+    <string name="about_studentid">1611453\n1612359\n1613449\n1613261</string>
+    <string name="about_githubname">GitHub</string>
+    <string name="about_githublink">https://github.com/Taku-firi/Cabicat</string>
+    <string name="about_Copyright_Declaration">Copyright Declaration</string>
+    <string name="about_copyright1">Copyright [2019] [CSE208 Group J]</string>
+    <string name="about_copyright2">Licensed under the Apache License, Version 2.0 (the "License");</string>
+    <string name="about_copyright3">you may not use this file except in compliance with the License.</string>
+    <string name="about_copyright4">You may obtain a copy of the License at</string>
+    <string name="about_copyright5">   http://www.apache.org/licenses/LICENSE-2.0</string>
+    <string name="about_copyright6">Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.</string>
+    <string name="home_about">About</string>
+
+
 </resources>
