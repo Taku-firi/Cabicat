@@ -34,25 +34,10 @@ public class NormalLayerFragment extends Fragment {
         normallayerViewModel =
                 ViewModelProviders.of(this).get(NormalLayerViewModel.class);
         View root = inflater.inflate(R.layout.fragment_normallayer, container, false);
-        final TextView textView = root.findViewById(R.id.text_normallayer);
-        normallayerViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
 
         mDatabase=((MainActivity)getActivity()).getDatabase();
 
-        // add this items when you check it at the first time
-
-        // fileitems for test
-//        FileItem f1 = new FileItem("name_n_1","path_n_1",2);
-//        FileItem f2 = new FileItem("name_n_2","path_n_2",2);
-//        FileItem f3 = new FileItem("name_n_3","path_n_3",2);
-//        mDatabase.createFileItem(f1,0);
-//        mDatabase.createFileItem(f2,0);
-//        mDatabase.createFileItem(f3,0);
 
         List<FileItem> ls = mDatabase.getAllItems(0);
 

@@ -32,8 +32,9 @@ public class FileAdapterSecretlayer extends BaseQuickAdapter<FileItem, BaseViewH
                 OpenFileUtil.openFileByPath(mContext,item.getPath());
                 item.updateCheckdate();
                 mDatabase.deleteFileItem(item.getPath(),1);
+                int cTime = item.getTimes() + 1;
+                item.updateTime(cTime);
                 mDatabase.createFileItem(item,1);
-                System.out.println(item.getCheckdate());
             }
         });
 

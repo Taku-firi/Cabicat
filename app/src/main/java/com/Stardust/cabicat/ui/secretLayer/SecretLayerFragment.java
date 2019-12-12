@@ -43,7 +43,7 @@ public class SecretLayerFragment extends Fragment {
         secretlayerViewModel =
                 ViewModelProviders.of(this).get(SecretLayerViewModel.class);
         View root = inflater.inflate(R.layout.fragment_secretlayer, container, false);
-        final TextView textView = root.findViewById(R.id.text_secretlayer);
+
         final RecyclerView recyclerView = root.findViewById(R.id.recyclerview_secretlayer);
 
 
@@ -52,13 +52,6 @@ public class SecretLayerFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(root.getContext(), DividerItemDecoration.VERTICAL));
 
 
-        // live data example (will be removed)
-        secretlayerViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
         SharedPreferences preferences = getActivity().getSharedPreferences("cabidata",Context.MODE_PRIVATE);
         boolean alreadyChecked = preferences.getBoolean("checked",false);
@@ -80,13 +73,6 @@ public class SecretLayerFragment extends Fragment {
                     if (pwd.equals(md5(password))) {
                         pwdCheckDialog.dismiss();
 
-                        // fileitems for test
-//        FileItem f1 = new FileItem("name_s_1","path_s_1",2);
-//        FileItem f2 = new FileItem("name_s_2","path_s_2",2);
-//        FileItem f3 = new FileItem("name_s_3","path_s_3",2);
-//        mDatabase.createFileItem(f1,1);
-//        mDatabase.createFileItem(f2,1);
-//        mDatabase.createFileItem(f3,1);
 
                         List<FileItem> ls = mDatabase.getAllItems(1);
 

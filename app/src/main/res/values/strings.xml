@@ -20,7 +20,7 @@
 <!--    <string name="home_latestfiles">Latest Files</string>-->
 <!--    <string name="home_recentfiles">Recently Viewed</string>-->
     <string name="home_import">Import to Cabicat</string>
-    <string name="home_changepwd">Change your password</string>
+    <string name="home_changepwd">Change password</string>
     // string for dialog
     <string name="dialog_label_text">Enter your password</string>
 
