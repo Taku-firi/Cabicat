@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutActivity">
+    tools:context=".AboutActivity"
+    android:background="@drawable/timg">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -106,10 +107,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/about_Copyright_Declaration"
-                android:textSize="34sp"
-                android:fontFamily="sans-serif-black"/>
+                android:fontFamily="sans-serif-black"
+                android:textSize="34sp" />
 
-                <TextView
+            <TextView
                     android:id="@+id/about_copyright1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,6 +152,52 @@
                     android:layout_height="wrap_content"
                     android:text="@string/about_copyright6"
                     android:textSize="20sp" />
+
+
+            <TextView
+                android:id="@+id/blank4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/about_open_source_license_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_open_sourcelicense_name"
+                android:fontFamily="sans-serif-black"
+                android:textSize="34sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/about_library"
+                    android:layout_width="529dp"
+                    android:layout_height="85dp"
+                    android:layout_weight="1"
+                    android:text="@string/about_library"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/about_license"
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:text="@string/about_license" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/blank5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="24sp" />
 
 
 
