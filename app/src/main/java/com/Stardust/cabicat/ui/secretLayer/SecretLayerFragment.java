@@ -25,7 +25,7 @@ import com.Stardust.cabicat.adapter.FileAdapterSecretlayer;
 import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 import com.Stardust.cabicat.item.PwdCheckDialog;
-
+import com.Stardust.cabicat.helper.FileOperateUtil;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -83,7 +83,21 @@ public class SecretLayerFragment extends Fragment {
                         editor.putBoolean("checked",true);
                         editor.apply();
                     } else {
-                        Toast.makeText(getActivity(), "Access Denied" + password, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Access Denied" , Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = getActivity().getSharedPreferences("cabidata",Context.MODE_PRIVATE).edit();
+                        int denied = pref.getInt("denied",0);
+                        denied = denied+1;
+                        if (denied == 5){
+                            editor.putInt("denied",0);
+                            editor.apply();
+                            Toast.makeText(getActivity(),"Hazardous situation, screat layer been cleaned. ",Toast.LENGTH_SHORT).show();
+                            FileOperateUtil util = new FileOperateUtil();
+                            util.deleteAllsecret(getContext(),mDatabase.getAllItems(1));
+                            mDatabase.deleteSecret();
+                        }else {
+                            editor.putInt("denied", denied);
+                            editor.apply();
+                        }
                         pwdCheckDialog.clearPasswordText();
                     }
                 }

@@ -2,12 +2,10 @@ package com.Stardust.cabicat.ui.home;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,14 +16,12 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.Stardust.cabicat.MainActivity;
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.adapter.CardviewAdapter;
-import com.Stardust.cabicat.adapter.FileAdapterNormallayer;
 import com.Stardust.cabicat.helper.DatabaseHelper;
 import com.Stardust.cabicat.item.FileItem;
 

@@ -42,8 +42,6 @@ public class ImportActivity extends MainActivity {
 
         requestExternalStorage();
 
-//        tv = findViewById(R.id.tv);
-//        tv2 = findViewById(R.id.tv2);
         btnNormal = findViewById(R.id.import_btn_normallayer);
         btnSecret = findViewById(R.id.import_btn_secretlayer);
 
@@ -53,11 +51,8 @@ public class ImportActivity extends MainActivity {
             public void onClick(View view) {
                 flag=true;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //intent.setType(“image/*”);//选择图片
-                //intent.setType(“audio/*”); //选择音频
-                //intent.setType(“video/*”); //选择视频 （mp4 3gp 是android支持的视频格式）
-                //intent.setType(“video/*;image/*”);//同时选择视频和图片
-                intent.setType("*/*");//无类型限制
+
+                intent.setType("*/*");
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(intent, 1);
             }
@@ -65,15 +60,11 @@ public class ImportActivity extends MainActivity {
         btnSecret.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                NavController controller = Navigation.findNavController(view);
-//                controller.navigate(R.id.action_navigation_home_to_fileManager);
+
                 flag=false;
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                //intent.setType(“image/*”);//选择图片
-                //intent.setType(“audio/*”); //选择音频
-                //intent.setType(“video/*”); //选择视频 （mp4 3gp 是android支持的视频格式）
-                //intent.setType(“video/*;image/*”);//同时选择视频和图片
-                intent.setType("*/*");//无类型限制
+
+                intent.setType("*/*");//
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 startActivityForResult(intent, 1);
             }
@@ -92,10 +83,10 @@ public class ImportActivity extends MainActivity {
             fis = new FileInputStream(file);
             size = fis.available();
         } else {
-            Log.e("获取文件大小", "文件不存在!");
+            Log.e("file size", "no such file");
         }
         return size;
-    }
+}
 
     String fileName;
     String filePath;
@@ -103,17 +94,11 @@ public class ImportActivity extends MainActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
             Uri uri = data.getData();
-//            filePath =uri.toString();
-//            File file = new File(String.valueOf(uri));
-
-//            String filesize = String.valueOf(file.length());
-//            String fileStartDate = String.valueOf(file.length());
 
             this.filePath = getPath(this, uri);
             fileName = this.filePath.substring(this.filePath.lastIndexOf("/") + 1, this.filePath.length());
-//            tv.setText(filePath);
-//            tv2.setText(fileName);
-            Toast.makeText(this,"Successful!!!!:"+ this.filePath,Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this,"Import Successfully",Toast.LENGTH_SHORT).show();
             DatabaseHelper mDatabase = getDatabase();
 
             if(flag){
@@ -187,16 +172,8 @@ public class ImportActivity extends MainActivity {
         return null;
     }
 
-    /**
-     * Get the value of the data column for this Uri. This is useful for
-     * MediaStore Uris, and other file-based ContentProviders.
-     *
-     * @param context       The context.
-     * @param uri           The Uri to query.
-     * @param selection     (Optional) Filter used in the query.
-     * @param selectionArgs (Optional) Selection arguments used in the query.
-     * @return The value of the _data column, which is typically a file path.
-     */
+
+    // Get the value of the data column for this Uri.
     public String getDataColumn(Context context, Uri uri, String selection,
                                 String[] selectionArgs) {
 
@@ -218,26 +195,20 @@ public class ImportActivity extends MainActivity {
         return null;
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is ExternalStorageProvider.
-     */
+
+    // Whether the Uri authority is ExternalStorageProvider
     public boolean isExternalStorageDocument(Uri uri) {
         return "com.android.externalstorage.documents".equals(uri.getAuthority());
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is DownloadsProvider.
-     */
+
+    // Whether the Uri authority is DownloadsProvider.
     public boolean isDownloadsDocument(Uri uri) {
         return "com.android.providers.downloads.documents".equals(uri.getAuthority());
     }
 
-    /**
-     * @param uri The Uri to check.
-     * @return Whether the Uri authority is MediaProvider.
-     */
+
+    // The Uri to check.
     public boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }

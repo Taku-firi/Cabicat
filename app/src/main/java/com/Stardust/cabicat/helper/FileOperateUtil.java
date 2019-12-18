@@ -8,10 +8,13 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.widget.Toast;
 
+import com.Stardust.cabicat.item.FileItem;
+
 import java.io.File;
+import java.util.List;
 
 
-public class OpenFileUtil {
+public class FileOperateUtil {
     private static final String[][] MATCH_ARRAY={
 
             {".3gp",    "video/3gpp"},
@@ -94,7 +97,7 @@ public class OpenFileUtil {
 
         String type = "";
         for(int i =0;i < MATCH_ARRAY.length;i++){
-            //判断文件的格式
+            //judge file format
             if(path.contains(MATCH_ARRAY[i][0])){
                 type = MATCH_ARRAY[i][1];
                 break;
@@ -104,11 +107,6 @@ public class OpenFileUtil {
             File out = new File(path);
             Uri fileURI;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                // Since file access rights are available after 7.0, you can apply in the androidmanifest by defining XML, or you can just skip the permissions
-
-//                fileURI = FileProvider.getUriForFile(context,
-//                        "com.lonelypluto.zyw_test.provider",
-//                        out);
                 // Skip permissions directly
                 StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
                 StrictMode.setVmPolicy(builder.build());
@@ -137,11 +135,17 @@ public class OpenFileUtil {
         try {
             File file = new File(path);
             file.delete();
-            Toast.makeText(context, "delete successfully 123", Toast.LENGTH_SHORT).show();
             return;
         }catch (Exception e){
             Toast.makeText(context, "you can not delete this file", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
+
+    public static void deleteAllsecret(Context context,List<FileItem> ls){
+        for(FileItem item: ls){
+            deleteFileByPath(context,item.getPath());
+        }
+    }
+
 }

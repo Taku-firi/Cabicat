@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         BottomNavigationView navView = findViewById(R.id.bottom_navigation);
+
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navView.getMenu()).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
