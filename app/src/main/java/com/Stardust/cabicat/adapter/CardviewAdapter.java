@@ -1,13 +1,9 @@
 package com.Stardust.cabicat.adapter;
 
 import android.view.View;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.helper.DatabaseHelper;
-import com.Stardust.cabicat.helper.OpenFileUtil;
+import com.Stardust.cabicat.helper.FileOperateUtil;
 import com.Stardust.cabicat.item.FileItem;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -34,7 +30,7 @@ public class CardviewAdapter extends BaseQuickAdapter<FileItem, BaseViewHolder> 
         viewHolder.getView(R.id.carditem_view_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OpenFileUtil.openFileByPath(mContext,item.getPath());
+                FileOperateUtil.openFileByPath(mContext,item.getPath());
                 item.updateCheckdate();
                 int cTime = item.getTimes() + 1;
                 item.updateTime(cTime);

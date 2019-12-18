@@ -1,13 +1,11 @@
 package com.Stardust.cabicat.ui.home;
 
 import android.content.SharedPreferences;
-import android.widget.ImageView;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import static android.content.Context.MODE_PRIVATE;
+
 
 public class HomeViewModel extends ViewModel {
 

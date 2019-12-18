@@ -5,7 +5,7 @@ import android.widget.Toast;
 
 import com.Stardust.cabicat.R;
 import com.Stardust.cabicat.helper.DatabaseHelper;
-import com.Stardust.cabicat.helper.OpenFileUtil;
+import com.Stardust.cabicat.helper.FileOperateUtil;
 import com.Stardust.cabicat.item.FileItem;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -29,7 +29,7 @@ public class FileAdapterSecretlayer extends BaseQuickAdapter<FileItem, BaseViewH
         viewHolder.getView(R.id.fileitem_view_content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OpenFileUtil.openFileByPath(mContext,item.getPath());
+                FileOperateUtil.openFileByPath(mContext,item.getPath());
                 item.updateCheckdate();
                 mDatabase.deleteFileItem(item.getPath(),1);
                 int cTime = item.getTimes() + 1;
@@ -98,7 +98,7 @@ public class FileAdapterSecretlayer extends BaseQuickAdapter<FileItem, BaseViewH
                 //  Database operation here :
                 mDatabase.deleteFileItem(item.getPath(),1);
                 //  Delete file here :
-
+                FileOperateUtil.deleteFileByPath(mContext,item.getPath());
                 hasDeleted = true;
 
                 if (hasDeleted){

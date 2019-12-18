@@ -234,6 +234,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Log.d(TAG, "delete: " + path);
     }
 
+    // delete all the info in the secret layer
+    public void deleteSecret(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_SECRETLAYER,null,null);
+    }
+
     // get related 10 files ordered by added date
     public List<FileItem> getNewestFile() {
         SQLiteDatabase db = this.getReadableDatabase();
