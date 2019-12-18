@@ -34,6 +34,8 @@ public class FileAdapterNormallayer extends BaseQuickAdapter<FileItem, BaseViewH
                 item.updateCheckdate();
                 int cTime = item.getTimes() + 1;
                 item.updateTime(cTime);
+                int pri = (int)Math.log(item.getFilesize().doubleValue()+ 1)*cTime;
+                item.setPriority(pri);
                 mDatabase.deleteFileItem(item.getPath(),0);
                 mDatabase.createFileItem(item,0);
             }
